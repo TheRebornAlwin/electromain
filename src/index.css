@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 96%;
+    --primary: 0 75% 44%;
+    --secondary: 0 0% 17%;
+    --accent: 28 100% 47%;
+    --muted: 0 0% 53%;
+    --muted-foreground: 0 0% 67%;
+    --border: 28 60% 25%;
+    --ring: 14 79% 50%;
+    --amber-mid: 14 79% 50%;
+    --charcoal: 0 0% 17%;
+  }
+
+  .dark {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 96%;
+    --primary: 0 75% 44%;
+    --secondary: 0 0% 17%;
+    --accent: 28 100% 47%;
+    --muted: 0 0% 53%;
+    --muted-foreground: 0 0% 67%;
+    --border: 28 60% 25%;
+    --ring: 14 79% 50%;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  .shadow-glow {
+    box-shadow: 0 0 30px rgba(242, 140, 0, 0.4),
+                0 0 60px rgba(195, 25, 25, 0.2);
+  }
+
+  .electrical-gradient {
+    background: linear-gradient(90deg, #F28C00 0%, #E24E1C 50%, #C31919 100%);
+  }
+
+  .electrical-glow {
+    text-shadow: 0 0 20px rgba(242, 140, 0, 0.5),
+                 0 0 40px rgba(226, 78, 28, 0.3);
+  }
+}
+
+html, body {
+  background-color: #0A0A0A;
+  color: #F5F5F5;
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: #F28C00;
+  color: #0A0A0A;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+.circuit-pattern {
+  background-image:
+    linear-gradient(90deg, rgba(242, 140, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(rgba(242, 140, 0, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
