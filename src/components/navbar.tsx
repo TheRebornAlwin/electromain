@@ -76,12 +76,15 @@ export default function Navbar() {
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300" />
           </a>
           <div className="w-px h-4 bg-border" />
-          <a
+          <motion.a
             href="#contact"
-            className="electrical-gradient px-6 py-2 rounded-full font-bold text-white hover:shadow-luxury transition-all duration-300 uppercase tracking-wider"
+            whileHover={{ scale: 1.05, y: -1 }}
+            whileTap={{ scale: 0.95 }}
+            className="electrical-gradient px-6 py-2 rounded-full font-bold text-white shadow-md hover:shadow-xl transition-all duration-300 uppercase tracking-wider relative group"
           >
-            Contact
-          </a>
+            <span className="relative z-10">Contact</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
+          </motion.a>
         </div>
       </div>
     </motion.nav>

@@ -61,27 +61,30 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
             className="flex flex-col md:flex-row pt-10 md:pt-32 gap-10 relative"
           >
             <div className="sticky top-40 self-start max-w-xs relative">
-              {/* Year indicator with background to create line break effect */}
-              <div className="absolute -left-8 top-4 w-12 h-12 rounded-full border-4 border-accent bg-white z-30 flex items-center justify-center shadow-md">
-                <motion.div
-                  className="absolute inset-0 rounded-full bg-accent/20"
-                  animate={{
-                    scale: [1, 1.3, 1],
-                    opacity: [0.3, 0.6, 0.3],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                />
-                <div className="w-3 h-3 rounded-full bg-accent z-10" />
+              {/* Year box with background to create proper line break */}
+              <div className="absolute -left-12 top-0 z-30">
+                <div className="relative bg-white border-2 border-accent rounded-xl px-4 py-3 shadow-lg">
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-br from-accent/10 to-primary/10 rounded-xl"
+                    animate={{
+                      opacity: [0.3, 0.6, 0.3],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
+                  <div className="relative z-10 text-xl font-bold electrical-gradient bg-clip-text text-transparent">
+                    {item.title}
+                  </div>
+                </div>
               </div>
 
-              <h3 className="text-3xl md:text-5xl font-bold font-display tracking-tight mb-2">
+              <h3 className="text-3xl md:text-5xl font-bold font-display tracking-tight mb-2 pl-16">
                 <span className="electrical-gradient bg-clip-text text-transparent">{item.title}</span>
               </h3>
-              <div className="w-20 h-1 bg-accent mt-3" />
+              <div className="w-20 h-1 bg-accent mt-3 ml-16" />
             </div>
 
             <div className="flex-1 bg-white backdrop-blur-sm p-8 rounded-xl border-2 border-accent/20 hover:border-accent/40 shadow-lg hover:shadow-luxury transition-all duration-300 relative overflow-hidden group">
@@ -93,23 +96,11 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
           </motion.div>
         ))}
 
-        {/* Timeline line segments - creates breaks at year indicators */}
-        {data.map((_, index) => (
-          index < data.length - 1 && (
-            <motion.div
-              key={`line-${index}`}
-              initial={{ scaleY: 0 }}
-              whileInView={{ scaleY: 1 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              viewport={{ once: true }}
-              className="absolute left-[18px] md:left-[30px] w-[3px] electrical-gradient origin-top z-10"
-              style={{
-                top: `${(index + 1) * 32 * 4}px`,
-                height: `${32 * 4}px`,
-              }}
-            />
-          )
-        ))}
+        {/* Continuous timeline line that flows behind year boxes */}
+        <motion.div
+          style={{ height: height + "px", opacity: opacityTransform }}
+          className="absolute left-[-1.5rem] md:left-[-2rem] top-8 w-[3px] electrical-gradient z-20"
+        />
       </div>
 
       <div className="absolute bottom-20 left-10 w-40 h-40 border-2 border-accent/10 rotate-45" />

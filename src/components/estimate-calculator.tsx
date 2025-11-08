@@ -65,7 +65,7 @@ export default function EstimateCalculator() {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent to-transparent" />
+            <div className="absolute -top-2 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent to-transparent" />
             <label className="block text-xs uppercase tracking-widest text-accent mb-3 font-bold">ROOMS</label>
             <div className="relative">
               <input
@@ -87,7 +87,7 @@ export default function EstimateCalculator() {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent to-transparent" />
+            <div className="absolute -top-2 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent to-transparent" />
             <label className="block text-xs uppercase tracking-widest text-accent mb-3 font-bold">FIXTURES</label>
             <div className="relative">
               <input
@@ -109,7 +109,7 @@ export default function EstimateCalculator() {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent to-transparent" />
+            <div className="absolute -top-2 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent to-transparent" />
             <label className="block text-xs uppercase tracking-widest text-accent mb-3 font-bold">OUTLETS</label>
             <div className="relative">
               <input
@@ -125,30 +125,19 @@ export default function EstimateCalculator() {
           </motion.div>
         </div>
 
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+        <motion.button
+          onClick={calculateEstimate}
+          disabled={calculating}
+          whileHover={{ scale: 1.02, y: -2 }}
+          whileTap={{ scale: 0.98 }}
+          className="mt-8 px-12 py-6 text-lg font-bold rounded-full electrical-gradient text-white shadow-lg hover:shadow-2xl transition-all duration-300 uppercase tracking-wider relative group disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          <Button
-            onClick={calculateEstimate}
-            disabled={calculating}
-            className="mt-8 px-12 py-6 text-lg font-bold rounded-full electrical-gradient text-white hover:shadow-luxury transition-all duration-300 uppercase tracking-wider relative overflow-hidden group"
-          >
-            <Power className="inline-block w-6 h-6 mr-3" />
+          <span className="relative z-10 flex items-center justify-center gap-3">
+            <Power className="w-6 h-6" />
             {calculating ? "CALCULATING..." : "GET ESTIMATE"}
-            <motion.div
-              className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20"
-              animate={calculating ? {
-                x: ["-100%", "100%"],
-              } : {}}
-              transition={{
-                duration: 1,
-                repeat: calculating ? Infinity : 0,
-                ease: "linear",
-              }}
-            />
-          </Button>
-        </motion.div>
+          </span>
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
+        </motion.button>
 
         {estimate && (
           <motion.div

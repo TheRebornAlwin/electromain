@@ -22,14 +22,14 @@ function FloatingPaths() {
   });
 
   return (
-    <div className="absolute inset-0 pointer-events-none opacity-30">
+    <div className="absolute inset-0 pointer-events-none opacity-50">
       <svg className="w-full h-full" viewBox="0 0 700 700" fill="none" preserveAspectRatio="xMidYMid slice">
         {paths.map((path) => (
           <motion.path
             key={path.id}
             d={path.d}
             stroke="url(#grad1)"
-            strokeWidth={path.width}
+            strokeWidth={path.width * 1.5}
             strokeLinecap="round"
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{
@@ -47,9 +47,9 @@ function FloatingPaths() {
         ))}
         <defs>
           <linearGradient id="grad1" x1="0%" y1="100%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#F59E0B" stopOpacity="0.4" />
-            <stop offset="50%" stopColor="#F97316" stopOpacity="0.6" />
-            <stop offset="100%" stopColor="#FB923C" stopOpacity="0.4" />
+            <stop offset="0%" stopColor="#F59E0B" stopOpacity="0.7" />
+            <stop offset="50%" stopColor="#F97316" stopOpacity="0.9" />
+            <stop offset="100%" stopColor="#FB923C" stopOpacity="0.7" />
           </linearGradient>
         </defs>
       </svg>

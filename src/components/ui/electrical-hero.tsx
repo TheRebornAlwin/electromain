@@ -2,8 +2,6 @@
 import { motion } from "framer-motion";
 import React from "react";
 import { AuroraBackground } from "./aurora-background";
-import { Button } from "./button";
-import { Zap } from "lucide-react";
 
 export function ElectricalHero({
   title,
@@ -28,29 +26,6 @@ export function ElectricalHero({
         }}
         className="relative flex flex-col gap-4 items-center justify-center px-4"
       >
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 0.1, duration: 0.5, type: "spring" }}
-          className="mb-8"
-        >
-          <div className="relative">
-            <Zap className="w-24 h-24 text-accent electrical-glow" strokeWidth={2} />
-            <motion.div
-              className="absolute inset-0 bg-accent rounded-full blur-2xl opacity-30"
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.3, 0.5, 0.3],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          </div>
-        </motion.div>
-
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -77,30 +52,23 @@ export function ElectricalHero({
           transition={{ delay: 0.8, duration: 0.8 }}
           className="flex flex-col sm:flex-row gap-4 mt-4"
         >
-          <Button
+          <motion.button
             onClick={primaryAction.onClick}
-            className="electrical-gradient text-white font-bold px-8 py-6 text-lg rounded-full hover:shadow-luxury transition-all duration-300 relative overflow-hidden group"
+            whileHover={{ scale: 1.02, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            className="electrical-gradient text-white font-bold px-10 py-6 text-lg rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 relative group"
           >
             <span className="relative z-10">{primaryAction.label}</span>
-            <motion.div
-              className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity"
-              animate={{
-                x: ["-100%", "100%"],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-            />
-          </Button>
-          <Button
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          </motion.button>
+          <motion.button
             onClick={secondaryAction.onClick}
-            variant="outline"
-            className="border-2 border-accent text-accent hover:bg-accent hover:text-white font-bold px-8 py-6 text-lg rounded-full transition-all duration-300 bg-white"
+            whileHover={{ scale: 1.02, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            className="border-2 border-accent text-accent hover:bg-accent hover:text-white font-bold px-10 py-6 text-lg rounded-full transition-all duration-300 bg-white shadow-md hover:shadow-xl relative group"
           >
-            {secondaryAction.label}
-          </Button>
+            <span className="relative z-10">{secondaryAction.label}</span>
+          </motion.button>
         </motion.div>
 
         <motion.div

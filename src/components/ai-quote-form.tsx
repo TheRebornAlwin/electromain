@@ -17,15 +17,133 @@ export default function AIQuoteForm() {
 
     await new Promise((res) => setTimeout(res, 1500));
 
-    // Realistic UK electrical pricing based on project description
-    const basePrice = 800 + Math.floor(Math.random() * 3200); // £800-£4000 range
-    const variance = Math.random() * 0.15 - 0.075; // +/- 7.5% variance
-    const finalPrice = Math.round(basePrice * (1 + variance)); // Rounded to nearest pound
+    // Smart pricing logic based on actual project description
+    const text = input.toLowerCase();
+
+    // Extract numbers from text
+    const numbers = text.match(/\d+/g)?.map(Number) || [];
+
+    // Detect property type and set base price
+    let basePrice = 3000; // Default for standard house
+    let propertyMultiplier = 1;
+
+    if (text.includes('mansion') || text.includes('estate')) {
+      basePrice = 20000;
+      propertyMultiplier = 1.5;
+    } else if (text.includes('commercial') || text.includes('office') || text.includes('shop') || text.includes('retail')) {
+      basePrice = 12000;
+      propertyMultiplier = 1.4;
+    } else if (text.includes('flat') || text.includes('apartment') || text.includes('studio')) {
+      basePrice = 2500;
+      propertyMultiplier = 0.8;
+    } else if (text.includes('bungalow')) {
+      basePrice = 3500;
+    } else if (text.includes('4 bed') || text.includes('4-bed') || text.includes('5 bed') || text.includes('5-bed')) {
+      basePrice = 6500;
+    } else if (text.includes('3 bed') || text.includes('3-bed')) {
+      basePrice = 4500;
+    }
+
+    // Detect number of floors/stories (extreme multiplier)
+    const floorKeywords = ['floor', 'story', 'storey', 'level'];
+    let floors = 0;
+    floorKeywords.forEach(keyword => {
+      const match = text.match(new RegExp(`(\\d+)[-\\s]?${keyword}`, 'i'));
+      if (match) {
+        floors = Math.max(floors, parseInt(match[1]));
+      }
+    });
+
+    // Apply floor multiplier (significant for mansions)
+    if (floors >= 7) {
+      basePrice *= 4; // 7+ floors is massive
+    } else if (floors >= 5) {
+      basePrice *= 2.5;
+    } else if (floors >= 4) {
+      basePrice *= 1.8;
+    } else if (floors >= 3) {
+      basePrice *= 1.3;
+    }
+
+    // Count specific items mentioned
+    let itemsCost = 0;
+
+    // Outlets/sockets
+    const outletMatch = text.match(/(\d+)\s*(outlet|socket|point)/i);
+    if (outletMatch) {
+      const outlets = parseInt(outletMatch[1]);
+      itemsCost += outlets * 110; // £110 per outlet
+    }
+
+    // Lights/fixtures
+    const lightMatch = text.match(/(\d+)\s*(light|fixture|downlight|led)/i);
+    if (lightMatch) {
+      const lights = parseInt(lightMatch[1]);
+      itemsCost += lights * 80; // £80 per fixture
+    }
+
+    // Rooms
+    const roomMatch = text.match(/(\d+)\s*(room|bedroom)/i);
+    if (roomMatch) {
+      const rooms = parseInt(roomMatch[1]);
+      itemsCost += rooms * 600; // £600 per room for wiring
+    }
+
+    // Special items and services
+    if (text.includes('full rewire') || text.includes('complete rewire') || text.includes('rewiring')) {
+      basePrice *= 2.2; // Major work
+    }
+
+    if (text.includes('consumer unit') || text.includes('fuse box') || text.includes('distribution board')) {
+      itemsCost += 1000; // Consumer unit upgrade
+    }
+
+    if (text.includes('ev charger') || text.includes('car charger') || text.includes('electric vehicle')) {
+      itemsCost += 1200; // EV charger installation
+    }
+
+    if (text.includes('outdoor') || text.includes('garden') || text.includes('exterior')) {
+      itemsCost += 800; // Outdoor electrical work
+    }
+
+    if (text.includes('security') || text.includes('cctv') || text.includes('alarm')) {
+      itemsCost += 600; // Security system wiring
+    }
+
+    if (text.includes('smart home') || text.includes('automation') || text.includes('dimmer')) {
+      itemsCost += 1500; // Smart home integration
+    }
+
+    if (text.includes('underfloor heating')) {
+      itemsCost += 2000; // Underfloor heating wiring
+    }
+
+    // Premium property multipliers
+    if (text.includes('period') || text.includes('listed') || text.includes('victorian') || text.includes('georgian')) {
+      propertyMultiplier *= 1.35; // Listed/period properties are harder
+    }
+
+    if (text.includes('kensington') || text.includes('chelsea') || text.includes('mayfair') || text.includes('knightsbridge')) {
+      propertyMultiplier *= 1.2; // Premium London areas
+    }
+
+    // Calculate final price
+    let totalPrice = (basePrice + itemsCost) * propertyMultiplier;
+
+    // Add variance for realism (±5%)
+    const variance = 0.95 + Math.random() * 0.1;
+    totalPrice *= variance;
+
+    // Ensure minimum sensible price
+    totalPrice = Math.max(totalPrice, 800);
+
+    // Round to nearest £50 for professional appearance
+    const finalPrice = Math.round(totalPrice / 50) * 50;
 
     const messages = [
-      `Based on your project description, we estimate the cost at approximately £${finalPrice}. This includes materials, labour, and certification.`,
-      `For the work you've described, our indicative quote is around £${finalPrice}. We'd be happy to provide a detailed breakdown after a site visit.`,
-      `Initial estimate: £${finalPrice}. Final pricing will be confirmed following an on-site assessment and discussion of your specific requirements.`,
+      `Based on your project description, we estimate the cost at approximately £${finalPrice.toLocaleString()}. This includes materials, labour, and certification.`,
+      `For the work you've described, our indicative quote is around £${finalPrice.toLocaleString()}. We'd be happy to provide a detailed breakdown after a site visit.`,
+      `Initial estimate: £${finalPrice.toLocaleString()}. Final pricing will be confirmed following an on-site assessment and discussion of your specific requirements.`,
     ];
     const chosen = messages[Math.floor(Math.random() * messages.length)];
 
@@ -116,30 +234,19 @@ Example: Complete rewiring needed for a 3-bedroom house in Kensington. Requireme
             <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent to-transparent" />
           </motion.div>
 
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          <motion.button
+            type="submit"
+            disabled={loading || input.length < 10}
+            whileHover={{ scale: 1.02, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            className="mx-auto px-12 py-6 text-lg font-bold rounded-full electrical-gradient text-white shadow-lg hover:shadow-2xl transition-all duration-300 uppercase tracking-wider relative group disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <Button
-              type="submit"
-              disabled={loading || input.length < 10}
-              className="mx-auto px-12 py-6 text-lg font-bold rounded-full electrical-gradient text-white hover:shadow-luxury transition-all duration-300 uppercase tracking-wider relative overflow-hidden group"
-            >
-              <Send className="inline-block w-5 h-5 mr-3" />
+            <span className="relative z-10 flex items-center justify-center gap-3">
+              <Send className="w-5 h-5" />
               {loading ? "CALCULATING..." : "GET QUOTE"}
-              <motion.div
-                className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20"
-                animate={loading ? {
-                  x: ["-100%", "100%"],
-                } : {}}
-                transition={{
-                  duration: 1,
-                  repeat: loading ? Infinity : 0,
-                  ease: "linear",
-                }}
-              />
-            </Button>
-          </motion.div>
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
+          </motion.button>
         </form>
 
         {response && (

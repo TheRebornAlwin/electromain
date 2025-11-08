@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import Navbar from "@/components/navbar";
 import { ElectricalHero } from "@/components/ui/electrical-hero";
 import EstimateCalculator from "@/components/estimate-calculator";
@@ -209,12 +210,15 @@ export default function App() {
                   <Mail className="w-4 h-4" />
                   <span>info@electromain.co.uk</span>
                 </div>
-                <button
+                <motion.button
                   type="submit"
-                  className="electrical-gradient text-white font-bold py-4 px-8 rounded-full hover:shadow-luxury transition-all duration-300 uppercase tracking-wider text-sm"
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="electrical-gradient text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 uppercase tracking-wider text-sm relative group"
                 >
-                  Send Message
-                </button>
+                  <span className="relative z-10">Send Message</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
+                </motion.button>
               </div>
             </form>
           </div>
