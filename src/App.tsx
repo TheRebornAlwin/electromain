@@ -6,10 +6,8 @@ import ProjectsShowcase from "@/components/projects-showcase";
 import EstimateCalculator from "@/components/estimate-calculator";
 import AIQuoteForm from "@/components/ai-quote-form";
 import ServicesCards from "@/components/services-cards";
-import { BackgroundPaths } from "@/components/ui/background-paths";
 import { Timeline } from "@/components/ui/timeline";
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
-import { PinContainer } from "@/components/ui/3d-pin";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function App() {
@@ -112,10 +110,8 @@ export default function App() {
 
       <AIQuoteForm />
 
-      <ServicesCards />
-
       <div id="services">
-        <BackgroundPaths title="Luxury Electrical Services" />
+        <ServicesCards />
       </div>
 
       <div id="timeline">

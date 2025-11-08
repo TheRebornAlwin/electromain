@@ -1,10 +1,6 @@
 "use client";
-import {
-  useScroll,
-  useTransform,
-  motion,
-} from "framer-motion";
-import React, { useRef, useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import React from "react";
 
 interface TimelineEntry {
   title: string;
@@ -12,99 +8,63 @@ interface TimelineEntry {
 }
 
 export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [height, setHeight] = useState(0);
-
-  useEffect(() => {
-    if (ref.current) setHeight(ref.current.getBoundingClientRect().height);
-  }, []);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start 10%", "end 50%"],
-  });
-
-  const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
-  const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
-
   return (
-    <div className="w-full bg-gradient-to-br from-white via-light-bg to-white relative overflow-hidden" ref={containerRef}>
-      <div className="absolute inset-0 circuit-pattern opacity-5" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-light-bg/50 to-transparent" />
+    <div className="relative py-32 md:py-40 bg-white overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-light-bg/20 via-white to-light-bg/20" />
 
-      <div className="max-w-6xl mx-auto py-20 px-4 md:px-8 relative z-10">
+      <div className="container mx-auto px-6 relative z-10 max-w-5xl">
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
+          className="text-center mb-24"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 font-display tracking-tight">
-            <span className="electrical-gradient bg-clip-text text-transparent">OUR</span>
-            <span className="text-secondary"> JOURNEY</span>
+          <h2 className="text-4xl md:text-6xl font-light tracking-tight mb-6">
+            <span className="text-secondary font-extralight">Our</span>
+            <span className="electrical-gradient bg-clip-text text-transparent font-normal"> Journey</span>
           </h2>
-          <p className="text-muted max-w-lg text-lg">
-            Years of experience delivering quality electrical installations across London and the South East
+          <div className="w-12 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent mx-auto mb-6" />
+          <p className="text-muted text-sm md:text-base font-light tracking-wide max-w-xl mx-auto">
+            Years of experience delivering excellence across London
           </p>
         </motion.div>
-      </div>
 
-      <div ref={ref} className="relative max-w-6xl mx-auto pb-20">
-        {data.map((item, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ delay: index * 0.2, duration: 0.8 }}
-            viewport={{ once: true }}
-            className="flex flex-col md:flex-row pt-10 md:pt-32 gap-10 relative"
-          >
-            <div className="sticky top-40 self-start max-w-xs relative">
-              {/* Year box with background to create proper line break */}
-              <div className="absolute -left-12 top-0 z-30">
-                <div className="relative bg-white border-2 border-accent rounded-xl px-4 py-3 shadow-lg">
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-br from-accent/10 to-primary/10 rounded-xl"
-                    animate={{
-                      opacity: [0.3, 0.6, 0.3],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                  />
-                  <div className="relative z-10 text-xl font-bold electrical-gradient bg-clip-text text-transparent">
+        <div className="space-y-16">
+          {data.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="flex gap-12 items-start">
+                <div className="flex-shrink-0 w-24 text-right">
+                  <div className="text-2xl md:text-3xl font-light electrical-gradient bg-clip-text text-transparent">
                     {item.title}
+                  </div>
+                </div>
+
+                <div className="flex-1 relative">
+                  <div className="absolute -left-6 top-3 w-2 h-2 rounded-full bg-accent/40" />
+                  <div className="relative bg-white p-8 md:p-10 rounded-lg border border-border/30 hover:border-accent/20 shadow-sm hover:shadow-lg transition-all duration-700">
+                    <div className="absolute inset-0 bg-gradient-to-br from-accent/[0.005] to-transparent opacity-0 hover:opacity-100 transition-opacity duration-700 rounded-lg" />
+                    <div className="relative text-sm md:text-base text-muted/80 font-light leading-relaxed">
+                      {item.content}
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <h3 className="text-3xl md:text-5xl font-bold font-display tracking-tight mb-2 pl-16">
-                <span className="electrical-gradient bg-clip-text text-transparent">{item.title}</span>
-              </h3>
-              <div className="w-20 h-1 bg-accent mt-3 ml-16" />
-            </div>
-
-            <div className="flex-1 bg-white backdrop-blur-sm p-8 rounded-xl border-2 border-accent/20 hover:border-accent/40 shadow-lg hover:shadow-luxury transition-all duration-300 relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-2 h-2 bg-primary rounded-full animate-pulse" />
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="text-secondary leading-relaxed">{item.content}</div>
-              <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
-            </div>
-          </motion.div>
-        ))}
-
-        {/* Continuous timeline line that flows behind year boxes */}
-        <motion.div
-          style={{ height: height + "px", opacity: opacityTransform }}
-          className="absolute left-[-1.5rem] md:left-[-2rem] top-8 w-[3px] electrical-gradient z-20"
-        />
+              {index < data.length - 1 && (
+                <div className="absolute left-[5.5rem] top-12 bottom-0 w-px bg-gradient-to-b from-accent/20 to-transparent" />
+              )}
+            </motion.div>
+          ))}
+        </div>
       </div>
-
-      <div className="absolute bottom-20 left-10 w-40 h-40 border-2 border-accent/10 rotate-45" />
-      <div className="absolute top-40 right-10 w-40 h-40 border-2 border-accent/10 -rotate-45" />
     </div>
   );
 };
