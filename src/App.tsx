@@ -90,14 +90,14 @@ export default function App() {
       <Navbar />
 
       <ElectricalHero
-        title="PRECISION. POWER. PERFECTION."
-        description="High-voltage electrical solutions engineered for the modern era — safe, efficient, and flawlessly executed."
+        title="PREMIUM ELECTRICAL SERVICES"
+        description="Delivering exceptional electrical installations and solutions across London and the South East with uncompromising quality and craftsmanship."
         primaryAction={{
           label: "GET ESTIMATE",
           onClick: () => document.querySelector("#estimate")?.scrollIntoView({ behavior: "smooth" }),
         }}
         secondaryAction={{
-          label: "OUR WORK",
+          label: "VIEW PROJECTS",
           onClick: () => document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" }),
         }}
       />
