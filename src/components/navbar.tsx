@@ -45,6 +45,14 @@ export default function Navbar() {
 
         <div className="flex items-center gap-8 text-sm font-medium tracking-wide relative z-10">
           <a
+            href="#projects"
+            className="relative text-muted hover:text-accent transition-colors duration-300 uppercase tracking-wider group"
+          >
+            <span>Projects</span>
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300" />
+          </a>
+          <div className="w-px h-4 bg-border" />
+          <a
             href="#estimate"
             className="relative text-muted hover:text-accent transition-colors duration-300 uppercase tracking-wider group"
           >

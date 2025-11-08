@@ -16,6 +16,84 @@ export function ElectricalHero({
 }) {
   return (
     <AuroraBackground>
+      {/* Left floating image stack */}
+      <div className="absolute left-8 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-6 z-10">
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0, y: [0, -15, 0] }}
+          transition={{
+            opacity: { delay: 0.5, duration: 0.8 },
+            x: { delay: 0.5, duration: 0.8 },
+            y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+          }}
+          className="w-56 h-72 rounded-2xl border-2 border-accent/30 bg-gradient-to-br from-white via-light-bg to-white backdrop-blur-sm shadow-luxury overflow-hidden relative group hover:border-accent/60 transition-all duration-500"
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-primary/5" />
+          <div className="absolute inset-0 flex items-center justify-center text-accent/20 font-bold text-sm uppercase tracking-wider">
+            Premium Work
+          </div>
+          <div className="absolute top-0 left-0 w-full h-1 electrical-gradient" />
+          <div className="absolute bottom-0 right-0 w-1 h-full electrical-gradient opacity-50" />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0, y: [0, 15, 0] }}
+          transition={{
+            opacity: { delay: 0.7, duration: 0.8 },
+            x: { delay: 0.7, duration: 0.8 },
+            y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
+          }}
+          className="w-56 h-56 rounded-2xl border-2 border-primary/30 bg-gradient-to-br from-white via-light-bg to-white backdrop-blur-sm shadow-luxury overflow-hidden relative group hover:border-primary/60 transition-all duration-500"
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5" />
+          <div className="absolute inset-0 flex items-center justify-center text-primary/20 font-bold text-sm uppercase tracking-wider">
+            Certified
+          </div>
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent" />
+          <div className="absolute bottom-0 left-0 w-1 h-full bg-gradient-to-b from-primary to-accent opacity-50" />
+        </motion.div>
+      </div>
+
+      {/* Right floating image stack */}
+      <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-6 z-10">
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0, y: [0, 15, 0] }}
+          transition={{
+            opacity: { delay: 0.6, duration: 0.8 },
+            x: { delay: 0.6, duration: 0.8 },
+            y: { duration: 4.5, repeat: Infinity, ease: "easeInOut" },
+          }}
+          className="w-56 h-64 rounded-2xl border-2 border-amber-mid/30 bg-gradient-to-br from-white via-light-bg to-white backdrop-blur-sm shadow-luxury overflow-hidden relative group hover:border-amber-mid/60 transition-all duration-500"
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-amber-mid/5 to-primary/5" />
+          <div className="absolute inset-0 flex items-center justify-center text-amber-mid/20 font-bold text-sm uppercase tracking-wider">
+            Excellence
+          </div>
+          <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-l from-amber-mid to-primary" />
+          <div className="absolute top-0 right-0 w-1 h-full bg-gradient-to-b from-amber-mid to-primary opacity-50" />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0, y: [0, -10, 0] }}
+          transition={{
+            opacity: { delay: 0.8, duration: 0.8 },
+            x: { delay: 0.8, duration: 0.8 },
+            y: { duration: 5.5, repeat: Infinity, ease: "easeInOut" },
+          }}
+          className="w-56 h-80 rounded-2xl border-2 border-accent/30 bg-gradient-to-br from-white via-light-bg to-white backdrop-blur-sm shadow-luxury overflow-hidden relative group hover:border-accent/60 transition-all duration-500"
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-amber-mid/5" />
+          <div className="absolute inset-0 flex items-center justify-center text-accent/20 font-bold text-sm uppercase tracking-wider">
+            Expertise
+          </div>
+          <div className="absolute bottom-0 right-0 w-full h-1 bg-gradient-to-l from-accent to-amber-mid" />
+          <div className="absolute bottom-0 left-0 w-1 h-full bg-gradient-to-t from-accent to-amber-mid opacity-50" />
+        </motion.div>
+      </div>
+
       <motion.div
         initial={{ opacity: 0.0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}

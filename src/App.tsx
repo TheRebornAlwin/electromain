@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Navbar from "@/components/navbar";
 import { ElectricalHero } from "@/components/ui/electrical-hero";
+import ProjectsShowcase from "@/components/projects-showcase";
 import EstimateCalculator from "@/components/estimate-calculator";
 import AIQuoteForm from "@/components/ai-quote-form";
 import ServicesCards from "@/components/services-cards";
@@ -97,9 +98,13 @@ export default function App() {
         }}
         secondaryAction={{
           label: "OUR WORK",
-          onClick: () => document.querySelector("#timeline")?.scrollIntoView({ behavior: "smooth" }),
+          onClick: () => document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" }),
         }}
       />
+
+      <div id="projects">
+        <ProjectsShowcase />
+      </div>
 
       <div id="estimate">
         <EstimateCalculator />
