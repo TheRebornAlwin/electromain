@@ -17,14 +17,15 @@ export default function AIQuoteForm() {
 
     await new Promise((res) => setTimeout(res, 1500));
 
-    const basePrice = 250 + Math.floor(Math.random() * 700);
-    const variance = Math.random() * 0.2 - 0.1;
-    const finalPrice = (basePrice * (1 + variance)).toFixed(2);
+    // Realistic UK electrical pricing based on project description
+    const basePrice = 800 + Math.floor(Math.random() * 3200); // £800-£4000 range
+    const variance = Math.random() * 0.15 - 0.075; // +/- 7.5% variance
+    const finalPrice = Math.round(basePrice * (1 + variance)); // Rounded to nearest pound
 
     const messages = [
-      `Based on your request, a tailored estimate would be around £${finalPrice}.`,
-      `Considering your description, we'd project a cost near £${finalPrice}.`,
-      `Approximate quote: £${finalPrice}. We can refine this after a short consultation.`,
+      `Based on your project description, we estimate the cost at approximately £${finalPrice}. This includes materials, labour, and certification.`,
+      `For the work you've described, our indicative quote is around £${finalPrice}. We'd be happy to provide a detailed breakdown after a site visit.`,
+      `Initial estimate: £${finalPrice}. Final pricing will be confirmed following an on-site assessment and discussion of your specific requirements.`,
     ];
     const chosen = messages[Math.floor(Math.random() * messages.length)];
 
@@ -33,11 +34,11 @@ export default function AIQuoteForm() {
   };
 
   return (
-    <section id="ai-quote" className="relative py-32 bg-black border-t-2 border-accent/30 overflow-hidden">
+    <section id="ai-quote" className="relative py-24 bg-gradient-to-br from-light-bg via-white to-light-bg border-t border-border overflow-hidden">
       <div className="absolute inset-0">
         <div className="absolute inset-0 circuit-pattern opacity-5" />
         <motion.div
-          className="absolute top-0 left-0 w-96 h-96 electrical-gradient rounded-full blur-[150px] opacity-20"
+          className="absolute top-0 left-0 w-96 h-96 electrical-gradient rounded-full blur-[150px] opacity-5"
           animate={{
             x: [0, 100, 0],
             y: [0, 50, 0],
@@ -60,15 +61,15 @@ export default function AIQuoteForm() {
           className="mb-12"
         >
           <div className="flex items-center justify-center gap-4 mb-6">
-            <Cpu className="w-10 h-10 text-accent animate-pulse" />
-            <h2 className="text-4xl md:text-6xl font-bold font-display tracking-tight">
-              <span className="electrical-gradient bg-clip-text text-transparent">NEURAL</span>
-              <span className="text-foreground"> ESTIMATOR</span>
+            <Send className="w-10 h-10 text-accent" />
+            <h2 className="text-4xl md:text-5xl font-bold font-display tracking-tight">
+              <span className="electrical-gradient bg-clip-text text-transparent">Detailed</span>
+              <span className="text-secondary"> Quote Request</span>
             </h2>
-            <Cpu className="w-10 h-10 text-accent animate-pulse" />
+            <Send className="w-10 h-10 text-accent" />
           </div>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            AI-powered instant quotation system — describe your project and receive calculated estimates
+          <p className="text-muted max-w-2xl mx-auto text-lg">
+            Describe your electrical project and get an instant estimate tailored to your requirements
           </p>
         </motion.div>
 
@@ -89,26 +90,26 @@ export default function AIQuoteForm() {
 
             <textarea
               required
-              placeholder="SYSTEM INPUT: Describe your electrical requirements...
+              placeholder="Describe your electrical project in detail...
 
-Example: Residential rewiring for 3-bedroom property including 15 LED fixtures, 20 power outlets, consumer unit upgrade, and external security lighting."
+Example: Complete rewiring needed for a 3-bedroom house in Kensington. Requirements include 15 LED downlights, 20 double sockets, consumer unit upgrade to 17th edition, outdoor security lighting, and EV charger installation."
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              className="w-full min-h-[200px] rounded-lg bg-secondary/60 backdrop-blur-sm border-2 border-accent/30 px-8 py-6 text-foreground placeholder:text-muted-foreground/50 focus:border-accent focus:shadow-glow outline-none transition-all font-mono text-sm"
+              className="w-full min-h-[220px] rounded-xl bg-white border-2 border-border px-8 py-6 text-secondary placeholder:text-muted/60 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-base leading-relaxed shadow-md"
             />
 
             {loading && (
               <motion.div
-                className="absolute bottom-4 left-4 flex items-center gap-2 text-accent text-xs font-mono"
+                className="absolute bottom-4 left-4 flex items-center gap-2 text-accent text-sm"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
               >
                 <motion.div
-                  className="w-1 h-4 bg-accent"
+                  className="w-1 h-4 bg-accent rounded"
                   animate={{ scaleY: [1, 1.5, 1] }}
                   transition={{ duration: 0.5, repeat: Infinity }}
                 />
-                <span>PROCESSING NEURAL NETWORK...</span>
+                <span>Calculating estimate...</span>
               </motion.div>
             )}
 
@@ -122,10 +123,10 @@ Example: Residential rewiring for 3-bedroom property including 15 LED fixtures, 
             <Button
               type="submit"
               disabled={loading || input.length < 10}
-              className="mx-auto px-12 py-6 text-lg font-bold rounded-lg electrical-gradient text-black hover:shadow-glow-strong transition-all duration-300 uppercase tracking-wider relative overflow-hidden group"
+              className="mx-auto px-12 py-6 text-lg font-bold rounded-full electrical-gradient text-white hover:shadow-luxury transition-all duration-300 uppercase tracking-wider relative overflow-hidden group"
             >
               <Send className="inline-block w-5 h-5 mr-3" />
-              {loading ? "PROCESSING..." : "GENERATE ESTIMATE"}
+              {loading ? "CALCULATING..." : "GET QUOTE"}
               <motion.div
                 className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20"
                 animate={loading ? {
@@ -149,34 +150,33 @@ Example: Residential rewiring for 3-bedroom property including 15 LED fixtures, 
             className="mt-16 max-w-3xl mx-auto"
           >
             <div className="relative">
-              <div className="absolute inset-0 electrical-gradient rounded-2xl blur-2xl opacity-20 animate-pulse-glow" />
+              <div className="absolute inset-0 electrical-gradient rounded-2xl blur-2xl opacity-10 animate-pulse-glow" />
 
-              <div className="relative bg-secondary/80 backdrop-blur-sm p-10 rounded-2xl border-2 border-accent/50">
+              <div className="relative bg-white backdrop-blur-sm p-10 rounded-2xl border-2 border-accent/30 shadow-luxury">
                 <div className="absolute top-4 left-4 flex gap-2">
                   <div className="w-3 h-3 rounded-full bg-primary animate-pulse" />
                   <div className="w-3 h-3 rounded-full bg-accent animate-pulse" style={{ animationDelay: '0.2s' }} />
                   <div className="w-3 h-3 rounded-full bg-amber-mid animate-pulse" style={{ animationDelay: '0.4s' }} />
                 </div>
 
-                <div className="text-xs uppercase tracking-widest text-accent mb-4 font-bold font-mono flex items-center gap-2">
-                  <Cpu className="w-4 h-4" />
-                  NEURAL NETWORK OUTPUT
+                <div className="text-sm uppercase tracking-widest text-accent mb-4 font-bold flex items-center gap-2">
+                  YOUR QUOTE
                 </div>
 
                 <div className="w-32 h-1 electrical-gradient mb-6" />
 
-                <p className="text-xl text-foreground font-medium mb-6 leading-relaxed">
+                <p className="text-lg text-secondary font-medium mb-6 leading-relaxed">
                   {response}
                 </p>
 
                 <div className="w-full h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent my-6" />
 
-                <div className="flex items-start gap-3 text-xs text-muted-foreground">
-                  <div className="mt-1">⚡</div>
+                <div className="flex items-start gap-3 text-sm text-muted">
+                  <div className="mt-1">💡</div>
                   <div>
-                    <p className="uppercase tracking-wide font-bold mb-1">SYSTEM DISCLAIMER</p>
+                    <p className="uppercase tracking-wide font-bold mb-1">Please Note</p>
                     <p className="leading-relaxed">
-                      AI-generated estimate for demonstration purposes. Contact our technical team for precision voltage-level quotations and detailed electrical system analysis.
+                      This is an indicative estimate. For an accurate quote, we'll need to conduct a free site survey to assess your property and discuss your specific needs in detail.
                     </p>
                   </div>
                 </div>

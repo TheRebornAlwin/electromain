@@ -11,7 +11,7 @@ export default function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 1 }}
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b-2 border-accent/30"
+        "fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-border shadow-sm"
       )}
     >
       <div className="container mx-auto px-6 py-4 flex justify-between items-center relative">
@@ -39,46 +39,46 @@ export default function Navbar() {
           </div>
           <h1 className="font-display text-2xl font-bold tracking-wider">
             <span className="electrical-gradient bg-clip-text text-transparent">ELECTRO</span>
-            <span className="text-foreground">MAIN</span>
+            <span className="text-secondary">MAIN</span>
           </h1>
         </motion.div>
 
         <div className="flex items-center gap-8 text-sm font-medium tracking-wide relative z-10">
           <a
             href="#estimate"
-            className="relative text-muted-foreground hover:text-accent transition-colors duration-300 uppercase tracking-wider group"
+            className="relative text-muted hover:text-accent transition-colors duration-300 uppercase tracking-wider group"
           >
             <span>Estimate</span>
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300" />
           </a>
-          <div className="w-px h-4 bg-accent/30" />
+          <div className="w-px h-4 bg-border" />
           <a
             href="#services"
-            className="relative text-muted-foreground hover:text-accent transition-colors duration-300 uppercase tracking-wider group"
+            className="relative text-muted hover:text-accent transition-colors duration-300 uppercase tracking-wider group"
           >
             <span>Services</span>
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300" />
           </a>
-          <div className="w-px h-4 bg-accent/30" />
+          <div className="w-px h-4 bg-border" />
           <a
             href="#timeline"
-            className="relative text-muted-foreground hover:text-accent transition-colors duration-300 uppercase tracking-wider group"
+            className="relative text-muted hover:text-accent transition-colors duration-300 uppercase tracking-wider group"
           >
             <span>Timeline</span>
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300" />
           </a>
-          <div className="w-px h-4 bg-accent/30" />
+          <div className="w-px h-4 bg-border" />
           <a
             href="#testimonials"
-            className="relative text-muted-foreground hover:text-accent transition-colors duration-300 uppercase tracking-wider group"
+            className="relative text-muted hover:text-accent transition-colors duration-300 uppercase tracking-wider group"
           >
             <span>Testimonials</span>
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300" />
           </a>
-          <div className="w-px h-4 bg-accent/30" />
+          <div className="w-px h-4 bg-border" />
           <a
             href="#contact"
-            className="electrical-gradient px-6 py-2 rounded-full font-bold text-black hover:shadow-glow transition-all duration-300 uppercase tracking-wider"
+            className="electrical-gradient px-6 py-2 rounded-full font-bold text-white hover:shadow-luxury transition-all duration-300 uppercase tracking-wider"
           >
             Contact
           </a>

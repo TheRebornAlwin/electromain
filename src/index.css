@@ -4,29 +4,31 @@
 
 @layer base {
   :root {
-    --background: 0 0% 4%;
-    --foreground: 0 0% 96%;
-    --primary: 51 100% 50%;
-    --secondary: 0 0% 17%;
-    --accent: 48 100% 50%;
-    --muted: 0 0% 53%;
-    --muted-foreground: 0 0% 67%;
-    --border: 48 60% 25%;
-    --ring: 48 100% 68%;
-    --amber-mid: 45 100% 49%;
-    --charcoal: 0 0% 17%;
+    --background: 0 0% 100%;        /* White background */
+    --foreground: 220 13% 13%;      /* Dark gray text */
+    --primary: 32 95% 48%;          /* Amber-500 */
+    --secondary: 220 13% 13%;       /* Gray-800 */
+    --accent: 24 95% 53%;           /* Orange-500 */
+    --muted: 220 9% 46%;            /* Gray-500 */
+    --muted-foreground: 220 9% 61%; /* Gray-400 */
+    --border: 220 13% 91%;          /* Gray-200 */
+    --ring: 32 95% 44%;             /* Amber-600 */
+    --amber-mid: 27 96% 61%;        /* Orange-400 */
+    --charcoal: 217 19% 27%;        /* Gray-700 */
+    --gold: 48 96% 53%;             /* Yellow-500 */
+    --light-bg: 220 14% 98%;        /* Gray-50 */
   }
 
   .dark {
-    --background: 0 0% 4%;
-    --foreground: 0 0% 96%;
-    --primary: 51 100% 50%;
-    --secondary: 0 0% 17%;
-    --accent: 48 100% 50%;
-    --muted: 0 0% 53%;
-    --muted-foreground: 0 0% 67%;
-    --border: 48 60% 25%;
-    --ring: 48 100% 68%;
+    --background: 0 0% 100%;
+    --foreground: 220 13% 13%;
+    --primary: 32 95% 48%;
+    --secondary: 220 13% 13%;
+    --accent: 24 95% 53%;
+    --muted: 220 9% 46%;
+    --muted-foreground: 220 9% 61%;
+    --border: 220 13% 91%;
+    --ring: 32 95% 44%;
   }
 
   body {
@@ -34,30 +36,30 @@
   }
 
   .shadow-glow {
-    box-shadow: 0 0 30px rgba(255, 215, 0, 0.4),
-                0 0 60px rgba(255, 199, 0, 0.2);
+    box-shadow: 0 0 20px rgba(251, 146, 60, 0.15),
+                0 0 40px rgba(245, 158, 11, 0.1);
   }
 
   .electrical-gradient {
-    background: linear-gradient(90deg, #FFC700 0%, #FFD700 50%, #FFB800 100%);
+    background: linear-gradient(135deg, #F59E0B 0%, #F97316 50%, #FB923C 100%);
   }
 
   .electrical-glow {
-    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5),
-                 0 0 40px rgba(255, 199, 0, 0.3);
+    text-shadow: 0 0 15px rgba(251, 146, 60, 0.3),
+                 0 0 30px rgba(245, 158, 11, 0.2);
   }
 }
 
 html, body {
-  background-color: #0A0A0A;
-  color: #F5F5F5;
+  background-color: #FFFFFF;
+  color: #1F2937;
   font-family: 'Inter', sans-serif;
   scroll-behavior: smooth;
 }
 
 ::selection {
-  background: #FFC700;
-  color: #0A0A0A;
+  background: #F97316;
+  color: #FFFFFF;
 }
 
 @keyframes flicker {
@@ -67,7 +69,7 @@ html, body {
 
 .circuit-pattern {
   background-image:
-    linear-gradient(90deg, rgba(255, 215, 0, 0.1) 1px, transparent 1px),
-    linear-gradient(rgba(255, 215, 0, 0.1) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(245, 158, 11, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(245, 158, 11, 0.08) 1px, transparent 1px);
   background-size: 50px 50px;
 }

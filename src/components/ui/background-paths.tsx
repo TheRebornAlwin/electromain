@@ -2,46 +2,54 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
-function FloatingPaths({ position }: { position: number }) {
-  const paths = Array.from({ length: 36 }, (_, i) => ({
-    id: i,
-    d: `M-${380 - i * 5 * position} -${189 + i * 6}C-${
-      380 - i * 5 * position
-    } -${189 + i * 6} -${312 - i * 5 * position} ${216 - i * 6} ${
-      152 - i * 5 * position
-    } ${343 - i * 6}C${616 - i * 5 * position} ${470 - i * 6} ${
-      684 - i * 5 * position
-    } ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
-    width: 0.5 + i * 0.03,
-  }));
+function FloatingPaths() {
+  // Create smooth diagonal lines going from bottom-left to top-right
+  const paths = Array.from({ length: 20 }, (_, i) => {
+    const yOffset = i * 30;
+    const xStart = -100;
+    const xEnd = 800;
+    const yStart = -50 + yOffset;
+    const yMid = 150 + yOffset;
+    const yEnd = 350 + yOffset;
+
+    return {
+      id: i,
+      // Smooth bezier curve going diagonally upward
+      d: `M${xStart} ${yStart} Q${xEnd / 3} ${yMid}, ${xEnd / 2} ${yMid + 20} T${xEnd} ${yEnd}`,
+      width: 0.8 + (i % 3) * 0.2,
+      delay: i * 0.3,
+    };
+  });
 
   return (
-    <div className="absolute inset-0 pointer-events-none">
-      <svg className="w-full h-full" viewBox="0 0 696 316" fill="none">
+    <div className="absolute inset-0 pointer-events-none opacity-30">
+      <svg className="w-full h-full" viewBox="0 0 700 700" fill="none" preserveAspectRatio="xMidYMid slice">
         {paths.map((path) => (
           <motion.path
             key={path.id}
             d={path.d}
             stroke="url(#grad1)"
             strokeWidth={path.width}
-            initial={{ pathLength: 0.3, opacity: 0.6 }}
+            strokeLinecap="round"
+            initial={{ pathLength: 0, opacity: 0 }}
             animate={{
-              pathLength: 1,
-              opacity: [0.3, 0.6, 0.3],
-              pathOffset: [0, 1, 0],
+              pathLength: [0, 1, 1, 0],
+              opacity: [0, 0.6, 0.6, 0],
             }}
             transition={{
-              duration: 18 + Math.random() * 10,
+              duration: 8,
+              delay: path.delay,
               repeat: Number.POSITIVE_INFINITY,
-              ease: "linear",
+              ease: "easeInOut",
+              repeatDelay: 2,
             }}
           />
         ))}
         <defs>
-          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#FFC700" />
-            <stop offset="50%" stopColor="#FFD700" />
-            <stop offset="100%" stopColor="#FFB800" />
+          <linearGradient id="grad1" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#F59E0B" stopOpacity="0.4" />
+            <stop offset="50%" stopColor="#F97316" stopOpacity="0.6" />
+            <stop offset="100%" stopColor="#FB923C" stopOpacity="0.4" />
           </linearGradient>
         </defs>
       </svg>
@@ -53,20 +61,19 @@ export function BackgroundPaths({ title = "Empowering Precision" }: { title?: st
   const words = title.split(" ");
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
-      <div className="absolute inset-0 circuit-pattern opacity-5" />
-      <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 via-black to-secondary/30" />
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-light-bg to-white">
+      <div className="absolute inset-0 circuit-pattern opacity-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-light-bg/50 to-transparent" />
 
       <div className="absolute inset-0">
-        <FloatingPaths position={1} />
-        <FloatingPaths position={-1} />
+        <FloatingPaths />
       </div>
 
       <motion.div
-        className="absolute top-1/4 left-1/4 w-96 h-96 electrical-gradient rounded-full blur-[150px] opacity-20"
+        className="absolute top-1/4 left-1/4 w-96 h-96 electrical-gradient rounded-full blur-[120px] opacity-10"
         animate={{
-          scale: [1, 1.3, 1],
-          opacity: [0.1, 0.3, 0.1],
+          scale: [1, 1.2, 1],
+          opacity: [0.05, 0.15, 0.05],
         }}
         transition={{
           duration: 8,
@@ -102,7 +109,7 @@ export function BackgroundPaths({ title = "Empowering Precision" }: { title?: st
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 1 }}
           viewport={{ once: true }}
-          className="text-muted-foreground text-xl max-w-2xl mx-auto mb-12"
+          className="text-muted text-xl max-w-2xl mx-auto mb-12"
         >
           Cutting-edge electrical infrastructure designed for maximum performance and reliability
         </motion.p>
@@ -117,7 +124,7 @@ export function BackgroundPaths({ title = "Empowering Precision" }: { title?: st
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Button
               variant="outline"
-              className="electrical-gradient text-black border-none rounded-full px-10 py-6 text-lg font-bold hover:shadow-glow-strong transition-all duration-300 uppercase tracking-wider"
+              className="electrical-gradient text-white border-none rounded-full px-10 py-6 text-lg font-bold hover:shadow-luxury transition-all duration-300 uppercase tracking-wider"
             >
               Power Up Your Project →
             </Button>

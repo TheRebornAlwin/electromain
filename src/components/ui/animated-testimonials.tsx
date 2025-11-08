@@ -41,10 +41,10 @@ export const AnimatedTestimonials = ({
         className="mb-16 text-center"
       >
         <h2 className="text-5xl md:text-6xl font-bold mb-4 font-display tracking-tight">
-          <span className="electrical-gradient bg-clip-text text-transparent">CLIENT</span>
-          <span className="text-foreground"> TESTIMONIALS</span>
+          <span className="electrical-gradient bg-clip-text text-transparent">Client</span>
+          <span className="text-secondary"> Testimonials</span>
         </h2>
-        <p className="text-muted-foreground text-lg">Powering satisfaction across every installation</p>
+        <p className="text-muted text-lg">What our customers say about our electrical services</p>
       </motion.div>
 
       <div className="grid md:grid-cols-2 gap-16">
@@ -76,7 +76,7 @@ export const AnimatedTestimonials = ({
           </AnimatePresence>
         </div>
         <div className="flex flex-col justify-center">
-          <div className="relative bg-secondary/40 backdrop-blur-sm p-8 rounded-2xl border-2 border-accent/30">
+          <div className="relative bg-white backdrop-blur-sm p-8 rounded-2xl border-2 border-accent/20 shadow-luxury">
             <div className="absolute top-0 left-0 w-full h-1 electrical-gradient" />
 
             <div className="absolute top-4 left-4 flex gap-2">
@@ -96,7 +96,7 @@ export const AnimatedTestimonials = ({
                 <span className="electrical-gradient bg-clip-text text-transparent">{testimonials[active].name}</span>
               </h3>
               <div className="w-16 h-1 bg-accent mb-4" />
-              <p className="text-muted-foreground mb-6 uppercase text-sm tracking-wider">
+              <p className="text-muted mb-6 uppercase text-sm tracking-wider">
                 {testimonials[active].designation}
               </p>
             </motion.div>
@@ -106,7 +106,7 @@ export const AnimatedTestimonials = ({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="text-lg leading-relaxed text-foreground mb-8"
+              className="text-lg leading-relaxed text-secondary mb-8"
             >
               "{testimonials[active].quote}"
             </motion.p>
@@ -116,7 +116,7 @@ export const AnimatedTestimonials = ({
                 onClick={prev}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className="h-12 w-12 rounded-lg bg-secondary border-2 border-accent/30 flex items-center justify-center hover:border-accent hover:shadow-glow transition-all"
+                className="h-12 w-12 rounded-lg bg-light-bg border-2 border-border flex items-center justify-center hover:border-accent hover:shadow-md transition-all"
               >
                 <IconArrowLeft className="text-accent" />
               </motion.button>
@@ -124,7 +124,7 @@ export const AnimatedTestimonials = ({
                 onClick={next}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className="h-12 w-12 rounded-lg bg-secondary border-2 border-accent/30 flex items-center justify-center hover:border-accent hover:shadow-glow transition-all"
+                className="h-12 w-12 rounded-lg bg-light-bg border-2 border-border flex items-center justify-center hover:border-accent hover:shadow-md transition-all"
               >
                 <IconArrowRight className="text-accent" />
               </motion.button>

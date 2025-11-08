@@ -66,7 +66,7 @@ export function ElectricalHero({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className="font-light text-lg md:text-2xl dark:text-neutral-200 py-4 text-center max-w-3xl"
+          className="font-light text-lg md:text-2xl text-muted py-4 text-center max-w-3xl"
         >
           {description}
         </motion.p>
@@ -79,7 +79,7 @@ export function ElectricalHero({
         >
           <Button
             onClick={primaryAction.onClick}
-            className="electrical-gradient text-black font-bold px-8 py-6 text-lg rounded-full hover:shadow-glow-strong transition-all duration-300 relative overflow-hidden group"
+            className="electrical-gradient text-white font-bold px-8 py-6 text-lg rounded-full hover:shadow-luxury transition-all duration-300 relative overflow-hidden group"
           >
             <span className="relative z-10">{primaryAction.label}</span>
             <motion.div
@@ -97,7 +97,7 @@ export function ElectricalHero({
           <Button
             onClick={secondaryAction.onClick}
             variant="outline"
-            className="border-2 border-accent text-accent hover:bg-accent hover:text-black font-bold px-8 py-6 text-lg rounded-full transition-all duration-300"
+            className="border-2 border-accent text-accent hover:bg-accent hover:text-white font-bold px-8 py-6 text-lg rounded-full transition-all duration-300 bg-white"
           >
             {secondaryAction.label}
           </Button>
