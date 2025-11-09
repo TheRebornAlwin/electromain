@@ -8,7 +8,9 @@ import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { WhyElectroMain } from "@/components/sections/WhyElectroMain";
 import { CTABand } from "@/components/sections/CTABand";
 import { ElectricalHero } from "@/components/ui/electrical-hero";
-import ProjectsShowcase from "@/components/projects-showcase";
+import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
+import { Projects3DShowcase } from "@/components/sections/Projects3DShowcase";
+import { OurProcess } from "@/components/sections/OurProcess";
 import EstimateCalculator from "@/components/estimate-calculator";
 import AIQuoteForm from "@/components/ai-quote-form";
 import { Timeline } from "@/components/ui/timeline";
@@ -93,24 +95,24 @@ export default function App() {
       <UtilityBar />
       <LuxuryHeader />
 
-      <ElectricalHero
-        title="PREMIUM ELECTRICAL SERVICES"
-        description="Delivering exceptional electrical installations and solutions across London and the South East with uncompromising quality and craftsmanship."
-        primaryAction={{
-          label: "GET ESTIMATE",
-          onClick: () => document.querySelector("#estimate")?.scrollIntoView({ behavior: "smooth" }),
-        }}
-        secondaryAction={{
-          label: "VIEW PROJECTS",
-          onClick: () => document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" }),
-        }}
-      />
+      <BackgroundBeamsWithCollision>
+        <ElectricalHero
+          title="PREMIUM ELECTRICAL SERVICES"
+          description="Delivering exceptional electrical installations and solutions across London and the South East with uncompromising quality and craftsmanship."
+          primaryAction={{
+            label: "GET ESTIMATE",
+            onClick: () => document.querySelector("#estimate")?.scrollIntoView({ behavior: "smooth" }),
+          }}
+          secondaryAction={{
+            label: "VIEW PROJECTS",
+            onClick: () => document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" }),
+          }}
+        />
+      </BackgroundBeamsWithCollision>
 
       <TrustBand />
 
-      <div id="projects">
-        <ProjectsShowcase />
-      </div>
+      <Projects3DShowcase />
 
       <div id="estimate">
         <EstimateCalculator />
@@ -119,6 +121,8 @@ export default function App() {
       <ServicesGrid />
 
       <WhyElectroMain />
+
+      <OurProcess />
 
       <AIQuoteForm />
 
