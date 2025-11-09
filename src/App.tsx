@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { UtilityBar } from "@/components/layout/UtilityBar";
 import { LuxuryHeader } from "@/components/layout/LuxuryHeader";
+import { TrustBand } from "@/components/sections/TrustBand";
 import { ElectricalHero } from "@/components/ui/electrical-hero";
 import ProjectsShowcase from "@/components/projects-showcase";
 import EstimateCalculator from "@/components/estimate-calculator";
@@ -101,6 +102,8 @@ export default function App() {
           onClick: () => document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" }),
         }}
       />
+
+      <TrustBand />
 
       <div id="projects">
         <ProjectsShowcase />
