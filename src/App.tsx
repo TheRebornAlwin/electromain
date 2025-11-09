@@ -4,6 +4,7 @@ import { UtilityBar } from "@/components/layout/UtilityBar";
 import { LuxuryHeader } from "@/components/layout/LuxuryHeader";
 import { TrustBand } from "@/components/sections/TrustBand";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
+import { WhyElectroMain } from "@/components/sections/WhyElectroMain";
 import { ElectricalHero } from "@/components/ui/electrical-hero";
 import ProjectsShowcase from "@/components/projects-showcase";
 import EstimateCalculator from "@/components/estimate-calculator";
@@ -114,6 +115,8 @@ export default function App() {
       </div>
 
       <ServicesGrid />
+
+      <WhyElectroMain />
 
       <AIQuoteForm />
 
