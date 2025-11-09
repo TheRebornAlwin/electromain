@@ -16,9 +16,9 @@ export const ThreeDMarquee = ({
   }>;
   className?: string;
 }) => {
-  // Split the projects array into 4 equal parts
-  const chunkSize = Math.ceil(projects.length / 4);
-  const chunks = Array.from({ length: 4 }, (_, colIndex) => {
+  // Split the projects array into 2 equal parts to prevent overlapping
+  const chunkSize = Math.ceil(projects.length / 2);
+  const chunks = Array.from({ length: 2 }, (_, colIndex) => {
     const start = colIndex * chunkSize;
     return projects.slice(start, start + chunkSize);
   });
@@ -36,7 +36,7 @@ export const ThreeDMarquee = ({
             style={{
               transform: "rotateX(55deg) rotateY(0deg) rotateZ(-45deg)",
             }}
-            className="relative top-96 right-[50%] grid size-full origin-top-left grid-cols-4 gap-16 transform-3d"
+            className="relative top-96 right-[50%] grid size-full origin-top-left grid-cols-2 gap-32 transform-3d"
           >
             {chunks.map((subarray, colIndex) => (
               <motion.div
@@ -47,7 +47,7 @@ export const ThreeDMarquee = ({
                   repeatType: "reverse",
                 }}
                 key={colIndex + "marquee"}
-                className="flex flex-col items-start gap-16"
+                className="flex flex-col items-start gap-32"
               >
                 <GridLineVertical className="-left-4" offset="80px" />
                 {subarray.map((project, imageIndex) => (

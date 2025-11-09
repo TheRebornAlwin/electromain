@@ -107,21 +107,13 @@ export function LuxuryHeader() {
                 initial={false}
               />
 
-              {/* Icon container with gradient */}
+              {/* Logo Image */}
               <div className="relative">
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center relative overflow-hidden shadow-card group-hover:shadow-float transition-shadow duration-300"
-                  style={{
-                    background: 'linear-gradient(135deg, #F6A21A 0%, #D96A0B 100%)',
-                  }}
-                >
-                  {/* Animated sweep on hover */}
-                  <div className="sweep-effect absolute inset-0" />
-
-                  <Zap
-                    className="w-6 h-6 text-white relative z-10"
-                    fill="white"
-                    strokeWidth={1.5}
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center relative overflow-hidden shadow-card group-hover:shadow-float transition-shadow duration-300 bg-white">
+                  <img
+                    src="https://suenwj7f98.ufs.sh/f/9KZEt2mkOo60FmTLuoPPqBu1Ck3sFtU0nNXgLi9Y7TbyjhxD"
+                    alt="ElectroMain Logo"
+                    className="w-full h-full object-contain p-1"
                   />
                 </div>
 

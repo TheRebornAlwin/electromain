@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { UtilityBar } from "@/components/layout/UtilityBar";
 import { LuxuryHeader } from "@/components/layout/LuxuryHeader";
 import { Footer } from "@/components/layout/Footer";
 import { TrustBand } from "@/components/sections/TrustBand";
@@ -92,7 +91,6 @@ export default function App() {
 
   return (
     <>
-      <UtilityBar />
       <LuxuryHeader />
 
       <BackgroundBeamsWithCollision>

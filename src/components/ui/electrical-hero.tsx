@@ -141,8 +141,8 @@ export function ElectricalHero({
           duration: 1.2,
           ease: [0.22, 1, 0.36, 1],
         }}
-        className="relative flex flex-col gap-8 items-center justify-center px-4 pt-40 pb-32"
-        style={{ minHeight: 'max(100dvh, 43.75rem)' }}
+        className="relative flex flex-col gap-8 items-center justify-center px-4 pt-48 pb-40"
+        style={{ minHeight: 'max(110dvh, 56rem)' }}
       >
         <div className="max-w-6xl mx-auto space-y-16">
           {/* Light luxury typography */}
