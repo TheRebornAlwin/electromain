@@ -87,17 +87,21 @@ export default function AIQuoteForm() {
   };
 
   return (
-    <section className="relative py-32 md:py-40 bg-gradient-to-b from-white via-light-bg/30 to-white overflow-hidden">
-      {/* Subtle image placeholder */}
+    <section className="relative py-32 md:py-40 bg-gradient-to-b from-background via-dark-200 to-background overflow-hidden">
+      {/* Industrial pattern overlay */}
+      <div className="absolute inset-0 industrial-pattern opacity-10" />
+
+      {/* Industrial-luxury image placeholder */}
       <div className="absolute left-12 bottom-20 hidden xl:block">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
-          className="w-56 h-72 rounded-lg border border-primary/5 bg-gradient-to-br from-white via-light-bg/30 to-white backdrop-blur-sm shadow-2xl"
+          className="w-56 h-72 rounded-lg glass-dark shadow-glow-orange relative overflow-hidden metallic"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.01] to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-orange/[0.05] to-transparent" />
+          <div className="absolute inset-0 industrial-pattern opacity-20" />
         </motion.div>
       </div>
 
@@ -110,10 +114,14 @@ export default function AIQuoteForm() {
           className="mb-16"
         >
           <h2 className="text-4xl md:text-6xl font-light tracking-tight mb-6">
-            <span className="text-secondary font-extralight">Detailed</span>
-            <span className="electrical-gradient bg-clip-text text-transparent font-normal"> Quote</span>
+            <span className="text-off-white font-extralight">Detailed</span>
+            <span className="brand-gradient bg-clip-text text-transparent font-normal glow-text-orange"> Quote</span>
           </h2>
-          <div className="w-12 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent mx-auto mb-6" />
+          <motion.div
+            className="w-12 h-px bg-gradient-to-r from-transparent via-brand-orange to-transparent mx-auto mb-6"
+            animate={{ opacity: [0.4, 0.8, 0.4] }}
+            transition={{ duration: 3, repeat: Infinity }}
+          />
           <p className="text-muted text-sm md:text-base font-light tracking-wide max-w-xl mx-auto">
             Describe your electrical project for an instant tailored estimate
           </p>
@@ -132,17 +140,17 @@ export default function AIQuoteForm() {
               placeholder="Example: Complete rewiring for a 3-bedroom house in Kensington. Requirements include 15 LED downlights, 20 double sockets, consumer unit upgrade, outdoor security lighting, and EV charger installation."
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              className="w-full min-h-[280px] rounded-lg bg-white border border-border/50 px-10 py-8 text-secondary placeholder:text-muted/70 focus:border-accent/30 focus:ring-1 focus:ring-accent/10 outline-none transition-all duration-500 text-base leading-relaxed shadow-sm hover:shadow-md resize-none"
+              className="w-full min-h-[280px] rounded-lg glass border border-brand-orange/30 px-10 py-8 text-off-white placeholder:text-muted/60 focus:border-brand-orange/60 focus:ring-2 focus:ring-brand-orange/20 outline-none transition-all duration-500 text-base leading-relaxed shadow-luxury hover:shadow-glow-orange resize-none"
             />
 
             {loading && (
               <motion.div
-                className="absolute bottom-6 left-6 flex items-center gap-3 text-accent/60 text-xs"
+                className="absolute bottom-6 left-6 flex items-center gap-3 text-brand-orange/70 text-xs"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
               >
                 <motion.div
-                  className="w-1 h-3 bg-accent/40 rounded"
+                  className="w-1 h-3 bg-brand-orange/50 rounded"
                   animate={{ scaleY: [1, 1.5, 1] }}
                   transition={{ duration: 0.6, repeat: Infinity }}
                 />
@@ -160,10 +168,32 @@ export default function AIQuoteForm() {
             viewport={{ once: true }}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="px-16 py-5 text-xs font-medium rounded-full electrical-gradient text-white shadow-xl hover:shadow-2xl transition-all duration-700 uppercase tracking-[0.3em] disabled:opacity-40 disabled:cursor-not-allowed relative overflow-hidden group"
+            animate={{
+              boxShadow: [
+                "0 20px 40px -15px rgba(242, 140, 0, 0.3)",
+                "0 20px 50px -15px rgba(242, 140, 0, 0.5)",
+                "0 20px 40px -15px rgba(242, 140, 0, 0.3)",
+              ]
+            }}
+            transition={{
+              boxShadow: { duration: 4, repeat: Infinity },
+              scale: { duration: 0.2 }
+            }}
+            className="px-16 py-5 text-xs font-semibold rounded-full brand-gradient text-background uppercase tracking-[0.3em] disabled:opacity-40 disabled:cursor-not-allowed relative overflow-hidden group"
           >
             <span className="relative z-10">{loading ? "Calculating" : "Get Quote"}</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+              animate={{
+                x: ["-100%", "100%"],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                repeatDelay: 1,
+                ease: "linear",
+              }}
+            />
           </motion.button>
         </form>
 
@@ -175,24 +205,35 @@ export default function AIQuoteForm() {
             className="mt-24 max-w-3xl mx-auto"
           >
             <div className="relative">
-              <div className="absolute inset-0 electrical-gradient rounded-lg blur-3xl opacity-5" />
-              <div className="relative bg-white backdrop-blur-sm p-12 md:p-16 rounded-lg border border-accent/10 shadow-2xl">
-                <p className="text-[10px] uppercase tracking-[0.3em] text-accent/60 mb-8 font-medium">
-                  Your Quote
-                </p>
-                <div className="w-8 h-px bg-gradient-to-r from-accent/30 via-accent/50 to-accent/30 mb-10" />
+              {/* Glowing ambient background */}
+              <div className="absolute inset-0 brand-gradient rounded-lg blur-3xl opacity-20" />
 
-                <p className="text-base md:text-lg text-secondary font-light mb-12 leading-relaxed">
-                  {response}
-                </p>
+              <div className="relative glass-dark p-12 md:p-16 rounded-lg border border-brand-orange/30 shadow-glow-orange">
+                {/* Industrial pattern overlay */}
+                <div className="absolute inset-0 industrial-pattern opacity-10 rounded-lg" />
 
-                <div className="pt-8 border-t border-border/30">
-                  <p className="text-[10px] uppercase tracking-[0.25em] text-muted/60 mb-3 font-medium">
-                    Please Note
+                <div className="relative">
+                  <p className="text-[10px] uppercase tracking-[0.3em] text-brand-orange/70 mb-8 font-medium">
+                    Your Quote
                   </p>
-                  <p className="text-xs text-muted/70 font-light leading-relaxed">
-                    This is an indicative estimate. A free site survey will be conducted to provide an accurate quote tailored to your property.
+                  <motion.div
+                    className="w-8 h-px bg-gradient-to-r from-brand-orange/40 via-brand-orange/70 to-brand-orange/40 mb-10"
+                    animate={{ opacity: [0.4, 0.8, 0.4] }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                  />
+
+                  <p className="text-base md:text-lg text-off-white font-light mb-12 leading-relaxed">
+                    {response}
                   </p>
+
+                  <div className="pt-8 border-t border-brand-orange/20">
+                    <p className="text-[10px] uppercase tracking-[0.25em] text-muted/70 mb-3 font-medium">
+                      Please Note
+                    </p>
+                    <p className="text-xs text-muted font-light leading-relaxed">
+                      This is an indicative estimate. A free site survey will be conducted to provide an accurate quote tailored to your property.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
