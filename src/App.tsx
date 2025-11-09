@@ -3,11 +3,11 @@ import { motion } from "framer-motion";
 import { UtilityBar } from "@/components/layout/UtilityBar";
 import { LuxuryHeader } from "@/components/layout/LuxuryHeader";
 import { TrustBand } from "@/components/sections/TrustBand";
+import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { ElectricalHero } from "@/components/ui/electrical-hero";
 import ProjectsShowcase from "@/components/projects-showcase";
 import EstimateCalculator from "@/components/estimate-calculator";
 import AIQuoteForm from "@/components/ai-quote-form";
-import ServicesCards from "@/components/services-cards";
 import { Timeline } from "@/components/ui/timeline";
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 import { Mail, Phone, MapPin } from "lucide-react";
@@ -113,11 +113,9 @@ export default function App() {
         <EstimateCalculator />
       </div>
 
-      <AIQuoteForm />
+      <ServicesGrid />
 
-      <div id="services">
-        <ServicesCards />
-      </div>
+      <AIQuoteForm />
 
       <div id="timeline">
         <Timeline data={timelineData} />
