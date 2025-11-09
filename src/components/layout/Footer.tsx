@@ -289,7 +289,7 @@ export function Footer() {
               © {new Date().getFullYear()} ElectroMain Ltd. All rights reserved. • Company No. 12345678 • VAT GB123456789
             </motion.p>
 
-            {/* Made with Claude Code badge */}
+            {/* Made with Triple Ten Digits badge */}
             <motion.div
               className="flex items-center gap-2 text-xs text-white/40"
               initial={{ opacity: 0 }}
@@ -299,12 +299,10 @@ export function Footer() {
             >
               <span>Built with precision by</span>
               <a
-                href="https://claude.com/claude-code"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="mailto:alwin@tripletendigits.com"
                 className="text-brand-sun-yellow hover:text-brand-amber transition-colors font-medium"
               >
-                Claude Code
+                Triple Ten Digits
               </a>
             </motion.div>
           </div>

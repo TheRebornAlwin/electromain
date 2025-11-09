@@ -14,7 +14,7 @@ import { OurProcess } from "@/components/sections/OurProcess";
 import EstimateCalculator from "@/components/estimate-calculator";
 import AIQuoteForm from "@/components/ai-quote-form";
 import { Timeline } from "@/components/ui/timeline";
-import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
+import { TestimonialMasonry } from "@/components/sections/TestimonialMasonry";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function App() {
@@ -130,9 +130,7 @@ export default function App() {
         <Timeline data={timelineData} />
       </div>
 
-      <div id="testimonials">
-        <AnimatedTestimonials testimonials={testimonials} />
-      </div>
+      <TestimonialMasonry />
 
       <div id="contact" className="relative py-24 bg-gradient-to-br from-white via-light-bg to-white overflow-hidden border-t border-border">
         <div className="absolute inset-0 circuit-pattern opacity-5" />

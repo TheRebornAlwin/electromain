@@ -12,6 +12,7 @@ export const ThreeDMarquee = ({
     title: string;
     category: string;
     aspectRatio: "16/9" | "4/3" | "1/1" | "3/2" | "21/9";
+    imageUrl?: string;
   }>;
   className?: string;
 }) => {
@@ -63,11 +64,20 @@ export const ThreeDMarquee = ({
                       className="aspect-[970/700] rounded-lg overflow-hidden ring ring-brand-amber/10 hover:ring-brand-amber/30 hover:shadow-2xl transition-all duration-500"
                       style={{ width: 970, height: 700 }}
                     >
-                      <LuxuryImagePlaceholder
-                        aspectRatio={project.aspectRatio}
-                        variant="elevated"
-                        animate={true}
-                      />
+                      {project.imageUrl ? (
+                        <img
+                          src={project.imageUrl}
+                          alt={project.title}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <LuxuryImagePlaceholder
+                          aspectRatio={project.aspectRatio}
+                          variant="elevated"
+                          animate={true}
+                        />
+                      )}
                       {/* Overlay with project info */}
                       <div className="absolute inset-0 bg-gradient-to-t from-ink-900/90 via-ink-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
                         <span className="text-[10px] uppercase font-bold text-brand-sun-yellow mb-2" style={{ letterSpacing: '2px' }}>

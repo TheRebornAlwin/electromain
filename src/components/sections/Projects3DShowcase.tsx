@@ -9,15 +9,60 @@ import { ThreeDMarquee } from "@/components/ui/3d-marquee";
 import { motion } from "framer-motion";
 
 const projects = [
-  { title: "Luxury Residential Rewire", category: "RESIDENTIAL", aspectRatio: "16/9" as const },
-  { title: "Modern Office Fit-Out", category: "COMMERCIAL", aspectRatio: "4/3" as const },
-  { title: "Period Property Restoration", category: "HERITAGE", aspectRatio: "16/9" as const },
-  { title: "Smart Home Integration", category: "TECHNOLOGY", aspectRatio: "4/3" as const },
-  { title: "Industrial Complex", category: "INDUSTRIAL", aspectRatio: "16/9" as const },
-  { title: "Boutique Hotel", category: "HOSPITALITY", aspectRatio: "3/2" as const },
-  { title: "Premium Apartment Complex", category: "RESIDENTIAL", aspectRatio: "4/3" as const },
-  { title: "Flagship Retail Store", category: "COMMERCIAL", aspectRatio: "16/9" as const },
-  { title: "Data Center Installation", category: "TECHNOLOGY", aspectRatio: "4/3" as const },
+  {
+    title: "Luxury Residential Rewire",
+    category: "RESIDENTIAL",
+    aspectRatio: "16/9" as const,
+    imageUrl: "https://suenwj7f98.ufs.sh/f/9KZEt2mkOo60r0hpP3UoRhLj40IuaYCfTJyANB2erwGx8nPc"
+  },
+  {
+    title: "Modern Office Fit-Out",
+    category: "COMMERCIAL",
+    aspectRatio: "4/3" as const,
+    imageUrl: "https://suenwj7f98.ufs.sh/f/9KZEt2mkOo60GbXOu1Q5a12FlCKLYI6AJEOzcqwjv50oHBP4"
+  },
+  {
+    title: "Period Property Restoration",
+    category: "HERITAGE",
+    aspectRatio: "16/9" as const,
+    imageUrl: "https://suenwj7f98.ufs.sh/f/9KZEt2mkOo60OccDWmsMFbNBq7voiIeZ8pd43Pzu0tTDR9lM"
+  },
+  {
+    title: "Smart Home Integration",
+    category: "TECHNOLOGY",
+    aspectRatio: "4/3" as const,
+    imageUrl: "https://suenwj7f98.ufs.sh/f/9KZEt2mkOo60O6tjA1MFbNBq7voiIeZ8pd43Pzu0tTDR9lMJ"
+  },
+  {
+    title: "Industrial Complex",
+    category: "INDUSTRIAL",
+    aspectRatio: "16/9" as const,
+    imageUrl: "https://suenwj7f98.ufs.sh/f/9KZEt2mkOo60563axeYQcokl7hjW2Xn48vdNO9FasTyD6IMb"
+  },
+  {
+    title: "Boutique Hotel",
+    category: "HOSPITALITY",
+    aspectRatio: "3/2" as const,
+    imageUrl: "https://suenwj7f98.ufs.sh/f/9KZEt2mkOo60KUWmTE8pEAjeMQOGTb9VvPHucf4Cods1yFk6"
+  },
+  {
+    title: "Premium Apartment Complex",
+    category: "RESIDENTIAL",
+    aspectRatio: "4/3" as const,
+    imageUrl: "https://suenwj7f98.ufs.sh/f/9KZEt2mkOo60YgpnSDbFJWghNpkz60GSmELv43BZaxPTbOY9"
+  },
+  {
+    title: "Flagship Retail Store",
+    category: "COMMERCIAL",
+    aspectRatio: "16/9" as const,
+    imageUrl: "https://suenwj7f98.ufs.sh/f/9KZEt2mkOo60VuzSUIWhDRFXsu6pOCWxBLnbZHgvImqo3E1A"
+  },
+  {
+    title: "Data Center Installation",
+    category: "TECHNOLOGY",
+    aspectRatio: "4/3" as const,
+    imageUrl: "https://suenwj7f98.ufs.sh/f/9KZEt2mkOo60LmML0di0LIztSgi7JQ9OW4xouMKaepnsh6GU"
+  },
   { title: "Listed Building Upgrade", category: "HERITAGE", aspectRatio: "16/9" as const },
   { title: "Warehouse Electrical Fit-Out", category: "INDUSTRIAL", aspectRatio: "3/2" as const },
   { title: "Restaurant Chain Rollout", category: "HOSPITALITY", aspectRatio: "4/3" as const },
