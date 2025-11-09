@@ -23,21 +23,21 @@ export const AuroraBackground = ({
         {...props}
       >
         <div className="absolute inset-0 overflow-hidden">
-          {/* Industrial gradient glow - orange → red */}
+          {/* Light luxury gradient - yellow → amber → burnt orange (NO RED) */}
           <div
             className={cn(
               `
-            [--dark-gradient:repeating-linear-gradient(100deg,#0F0F0F_0%,#0F0F0F_7%,var(--transparent)_10%,var(--transparent)_12%,#0F0F0F_16%)]
-            [--industrial-glow:repeating-linear-gradient(100deg,#F28C00_10%,#E24E1C_15%,#C31919_20%,#E24E1C_25%,#F28C00_30%)]
-            [background-image:var(--dark-gradient),var(--industrial-glow)]
+            [--light-gradient:repeating-linear-gradient(100deg,#FAFAF8_0%,#FAFAF8_7%,var(--transparent)_10%,var(--transparent)_12%,#FAFAF8_16%)]
+            [--luxury-glow:repeating-linear-gradient(100deg,#FFD254_10%,#F6A21A_20%,#D96A0B_30%,#F6A21A_40%,#FFD254_50%)]
+            [background-image:var(--light-gradient),var(--luxury-glow)]
             [background-size:300%,_200%]
             [background-position:50%_50%,50%_50%]
-            filter blur-[10px]
-            after:content-[""] after:absolute after:inset-0 after:[background-image:var(--dark-gradient),var(--industrial-glow)]
+            filter blur-[12px]
+            after:content-[""] after:absolute after:inset-0 after:[background-image:var(--light-gradient),var(--luxury-glow)]
             after:[background-size:200%,_100%]
-            after:animate-aurora after:[background-attachment:fixed] after:mix-blend-screen
+            after:animate-aurora after:[background-attachment:fixed] after:mix-blend-soft-light
             pointer-events-none
-            absolute -inset-[10px] opacity-40 will-change-transform`,
+            absolute -inset-[10px] opacity-25 will-change-transform`,
 
               showRadialGradient &&
                 `[mask-image:radial-gradient(ellipse_at_100%_0%,black_10%,var(--transparent)_70%)]`
