@@ -2,9 +2,11 @@ import React from "react";
 import { motion } from "framer-motion";
 import { UtilityBar } from "@/components/layout/UtilityBar";
 import { LuxuryHeader } from "@/components/layout/LuxuryHeader";
+import { Footer } from "@/components/layout/Footer";
 import { TrustBand } from "@/components/sections/TrustBand";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { WhyElectroMain } from "@/components/sections/WhyElectroMain";
+import { CTABand } from "@/components/sections/CTABand";
 import { ElectricalHero } from "@/components/ui/electrical-hero";
 import ProjectsShowcase from "@/components/projects-showcase";
 import EstimateCalculator from "@/components/estimate-calculator";
@@ -249,6 +251,10 @@ export default function App() {
           </div>
         </div>
       </div>
+
+      <CTABand />
+
+      <Footer />
     </>
   );
 }
