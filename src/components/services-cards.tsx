@@ -52,28 +52,31 @@ const services = [
 
 export default function ServicesCards() {
   return (
-    <section className="relative py-40 md:py-48 bg-gradient-to-b from-white via-light-bg/20 to-white overflow-hidden">
-      {/* Sophisticated background depth */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-light-bg/40 via-white to-white" />
+    <section className="relative py-40 md:py-48 bg-gradient-to-b from-background via-dark-200 to-background overflow-hidden">
+      {/* Industrial-luxury background depth */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-dark-200/60 via-background to-background" />
 
-      {/* Floating orbs for depth */}
-      <div className="absolute top-20 left-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      {/* Industrial pattern overlay */}
+      <div className="absolute inset-0 industrial-pattern opacity-10" />
 
-      {/* Luxury image placeholders */}
+      {/* Glowing orbs for ambient depth */}
+      <div className="absolute top-20 left-10 w-96 h-96 bg-brand-orange/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-brand-red/8 rounded-full blur-3xl" />
+
+      {/* Industrial-luxury image placeholders - copper/steel aesthetic */}
       <div className="absolute left-16 top-1/3 hidden 2xl:block">
         <motion.div
           initial={{ opacity: 0, scale: 0.95, rotateZ: -5 }}
           whileInView={{ opacity: 1, scale: 1, rotateZ: 0 }}
           transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
-          className="w-72 h-96 rounded-2xl border border-accent/8 bg-gradient-to-br from-white/90 via-light-bg/60 to-white/90 backdrop-blur-xl shadow-2xl relative overflow-hidden"
+          className="w-72 h-96 rounded-2xl glass-dark shadow-glow-orange relative overflow-hidden metallic"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-accent/[0.02] via-transparent to-primary/[0.02]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,_hsl(var(--accent)/0.05),transparent_50%)]" />
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-orange/[0.06] via-transparent to-brand-gradient/[0.04]" />
+          <div className="absolute inset-0 industrial-pattern opacity-20" />
           <motion.div
-            className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent"
-            animate={{ opacity: [0.3, 0.6, 0.3] }}
+            className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-orange/60 to-transparent"
+            animate={{ opacity: [0.4, 0.8, 0.4] }}
             transition={{ duration: 3, repeat: Infinity }}
           />
         </motion.div>
@@ -85,13 +88,13 @@ export default function ServicesCards() {
           whileInView={{ opacity: 1, scale: 1, rotateZ: 0 }}
           transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
           viewport={{ once: true }}
-          className="w-80 h-64 rounded-2xl border border-primary/8 bg-gradient-to-br from-white/90 via-light-bg/60 to-white/90 backdrop-blur-xl shadow-2xl relative overflow-hidden"
+          className="w-80 h-64 rounded-2xl glass-dark shadow-glow-gradient relative overflow-hidden metallic"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.02] via-transparent to-accent/[0.02]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,_hsl(var(--primary)/0.05),transparent_50%)]" />
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-gradient/[0.05] via-transparent to-brand-red/[0.04]" />
+          <div className="absolute inset-0 industrial-pattern opacity-20" />
           <motion.div
-            className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"
-            animate={{ opacity: [0.3, 0.6, 0.3] }}
+            className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-gradient/60 to-transparent"
+            animate={{ opacity: [0.4, 0.8, 0.4] }}
             transition={{ duration: 3, repeat: Infinity, delay: 1 }}
           />
         </motion.div>
@@ -113,10 +116,14 @@ export default function ServicesCards() {
             className="mb-8"
           >
             <h2 className="text-5xl md:text-7xl font-light tracking-tight mb-8">
-              <span className="text-secondary font-extralight">Our</span>
-              <span className="electrical-gradient bg-clip-text text-transparent font-normal"> Services</span>
+              <span className="text-off-white font-extralight">Our</span>
+              <span className="brand-gradient bg-clip-text text-transparent font-normal glow-text-orange"> Services</span>
             </h2>
-            <div className="w-20 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent mx-auto mb-8" />
+            <motion.div
+              className="w-20 h-px bg-gradient-to-r from-transparent via-brand-orange to-transparent mx-auto mb-8"
+              animate={{ opacity: [0.4, 0.8, 0.4] }}
+              transition={{ duration: 3, repeat: Infinity }}
+            />
           </motion.div>
           <motion.p
             initial={{ opacity: 0 }}
@@ -163,7 +170,7 @@ const GridItem = ({ area, icon, title, description, index }: GridItemProps) => {
       viewport={{ once: true }}
       className={cn("min-h-[15rem] list-none", area)}
     >
-      <div className="relative h-full rounded-[1.5rem] border border-border/40 p-2.5 md:rounded-[1.75rem] md:p-3.5 group hover:border-accent/30 transition-all duration-700">
+      <div className="relative h-full rounded-[1.5rem] border border-brand-orange/20 p-2.5 md:rounded-[1.75rem] md:p-3.5 group hover:border-brand-orange/40 transition-all duration-700">
         <GlowingEffect
           spread={50}
           glow={true}
@@ -173,29 +180,44 @@ const GridItem = ({ area, icon, title, description, index }: GridItemProps) => {
           borderWidth={2.5}
           movementDuration={2.5}
         />
-        <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl border border-border/30 bg-gradient-to-br from-white via-light-bg/30 to-white p-8 shadow-xl group-hover:shadow-2xl transition-all duration-700 md:p-8">
+        <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl glass shadow-luxury group-hover:shadow-glow-orange transition-all duration-700 md:p-8 p-8">
+          {/* Industrial pattern overlay */}
+          <div className="absolute inset-0 industrial-pattern opacity-10" />
+
           <div className="relative flex flex-1 flex-col justify-between gap-4">
+            {/* Icon badge with orange glow */}
             <motion.div
-              className="w-fit rounded-xl border border-accent/20 bg-gradient-to-br from-accent/5 to-primary/5 p-3 shadow-sm"
+              className="w-fit rounded-xl border border-brand-orange/30 bg-gradient-to-br from-brand-orange/10 to-brand-gradient/5 p-3 shadow-glow-orange"
               whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
+              animate={{
+                boxShadow: [
+                  "0 0 15px rgba(242, 140, 0, 0.2)",
+                  "0 0 25px rgba(242, 140, 0, 0.4)",
+                  "0 0 15px rgba(242, 140, 0, 0.2)",
+                ]
+              }}
+              transition={{
+                scale: { duration: 0.3 },
+                boxShadow: { duration: 3, repeat: Infinity }
+              }}
             >
-              <div className="text-accent">
+              <div className="text-brand-orange">
                 {icon}
               </div>
             </motion.div>
+
             <div className="space-y-4">
-              <h3 className="text-2xl leading-tight font-normal tracking-tight text-secondary">
+              <h3 className="text-2xl leading-tight font-normal tracking-tight text-off-white">
                 {title}
               </h3>
-              <p className="text-sm leading-relaxed md:text-base md:leading-relaxed text-muted/80 font-light">
+              <p className="text-sm leading-relaxed md:text-base md:leading-relaxed text-muted font-light">
                 {description}
               </p>
             </div>
           </div>
 
-          {/* Subtle hover effect */}
-          <div className="absolute inset-0 bg-gradient-to-br from-accent/[0.01] to-primary/[0.01] opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-xl" />
+          {/* Subtle hover glow effect */}
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-orange/[0.03] to-brand-gradient/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-xl" />
         </div>
       </div>
     </motion.li>

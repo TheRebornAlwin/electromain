@@ -12,49 +12,115 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#F59E0B",      // Amber-500 - warm, professional
-        secondary: "#1F2937",     // Gray-800 - dark text
-        accent: "#F97316",        // Orange-500 - vibrant accent
-        background: "#FFFFFF",    // Pure white
-        foreground: "#1F2937",    // Dark gray text
-        ring: "#D97706",          // Amber-600 - golden ring
-        muted: "#6B7280",         // Gray-500 - muted elements
-        'muted-foreground': "#9CA3AF", // Gray-400 - subtle text
-        'amber-mid': "#FB923C",   // Orange-400 - mid-tone
-        'charcoal': "#374151",    // Gray-700 - charcoal
-        'gold': "#EAB308",        // Yellow-500 - gold accents
-        'light-bg': "#F9FAFB",    // Gray-50 - subtle background
+        // Industrial-Luxury Palette
+        'brand-red': "#C31919",        // Primary red - power, precision
+        'brand-orange': "#F28C00",     // Amber accent - warmth, energy
+        'brand-gradient': "#E24E1C",   // Gradient midpoint
+        'charcoal': "#2B2B2B",         // Deep charcoal - sophistication
+        'background': "#0F0F0F",       // Near-black background
+        'off-white': "#F4F4F4",        // Soft white text
+
+        // Semantic mappings
+        primary: "#F28C00",            // Orange
+        secondary: "#C31919",          // Red
+        accent: "#E24E1C",             // Gradient midpoint
+        foreground: "#F4F4F4",         // Off-white
+        muted: "#8A8A8A",              // Mid-gray
+        'muted-foreground': "#6A6A6A", // Darker gray
+        border: "#2B2B2B",             // Charcoal
+        ring: "#F28C00",               // Orange ring
+
+        // Utility shades
+        'dark-100': "#0F0F0F",
+        'dark-200': "#1A1A1A",
+        'dark-300': "#2B2B2B",
+        'dark-400': "#3F3F3F",
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
         display: ["Rajdhani", "Orbitron", "sans-serif"],
       },
       boxShadow: {
-        glow: "0 0 20px rgba(251, 146, 60, 0.15), 0 0 40px rgba(245, 158, 11, 0.1)",
-        'glow-strong': "0 0 30px rgba(251, 146, 60, 0.25), 0 0 60px rgba(245, 158, 11, 0.15)",
-        'luxury': "0 10px 40px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.06)",
+        // Cinematic luxury shadows
+        'glow-red': "0 0 40px rgba(195, 25, 25, 0.3), 0 0 80px rgba(195, 25, 25, 0.15)",
+        'glow-orange': "0 0 40px rgba(242, 140, 0, 0.3), 0 0 80px rgba(242, 140, 0, 0.15)",
+        'glow-gradient': "0 0 40px rgba(226, 78, 28, 0.4), 0 0 80px rgba(226, 78, 28, 0.2)",
+        'luxury': "0 20px 60px -15px rgba(0, 0, 0, 0.8), 0 10px 20px -10px rgba(0, 0, 0, 0.4)",
+        'luxury-sm': "0 10px 30px -10px rgba(0, 0, 0, 0.6)",
+        'inner-glow': "inset 0 0 20px rgba(242, 140, 0, 0.1)",
       },
       animation: {
-        aurora: "aurora 60s linear infinite",
-        'spark': "spark 2s ease-in-out infinite",
-        'pulse-glow': "pulseGlow 2s ease-in-out infinite",
+        // Cinematic animations
+        'gradient-shift': "gradientShift 8s ease-in-out infinite",
+        'breathe': "breathe 4s ease-in-out infinite",
+        'float': "float 6s ease-in-out infinite",
+        'pulse-glow': "pulseGlow 3s ease-in-out infinite",
+        'slide-up': "slideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1)",
+        'slide-in': "slideIn 0.8s cubic-bezier(0.22, 1, 0.36, 1)",
+        'fade-in': "fadeIn 1s cubic-bezier(0.22, 1, 0.36, 1)",
       },
       keyframes: {
-        aurora: {
-          from: {
-            backgroundPosition: "50% 50%, 50% 50%",
+        gradientShift: {
+          '0%, 100%': {
+            backgroundPosition: '0% 50%',
           },
-          to: {
-            backgroundPosition: "350% 50%, 350% 50%",
+          '50%': {
+            backgroundPosition: '100% 50%',
           },
         },
-        spark: {
-          '0%, 100%': { opacity: '0.3' },
-          '50%': { opacity: '1' },
+        breathe: {
+          '0%, 100%': {
+            transform: 'scale(1)',
+            opacity: '1',
+          },
+          '50%': {
+            transform: 'scale(1.02)',
+            opacity: '0.95',
+          },
+        },
+        float: {
+          '0%, 100%': {
+            transform: 'translateY(0px)',
+          },
+          '50%': {
+            transform: 'translateY(-20px)',
+          },
         },
         pulseGlow: {
-          '0%, 100%': { boxShadow: '0 0 15px rgba(251, 146, 60, 0.2)' },
-          '50%': { boxShadow: '0 0 30px rgba(251, 146, 60, 0.4), 0 0 45px rgba(245, 158, 11, 0.2)' },
+          '0%, 100%': {
+            boxShadow: '0 0 20px rgba(242, 140, 0, 0.2)',
+          },
+          '50%': {
+            boxShadow: '0 0 40px rgba(242, 140, 0, 0.4), 0 0 60px rgba(195, 25, 25, 0.2)',
+          },
+        },
+        slideUp: {
+          from: {
+            opacity: '0',
+            transform: 'translateY(30px)',
+          },
+          to: {
+            opacity: '1',
+            transform: 'translateY(0)',
+          },
+        },
+        slideIn: {
+          from: {
+            opacity: '0',
+            transform: 'translateX(-30px)',
+          },
+          to: {
+            opacity: '1',
+            transform: 'translateX(0)',
+          },
+        },
+        fadeIn: {
+          from: {
+            opacity: '0',
+          },
+          to: {
+            opacity: '1',
+          },
         },
       },
     },

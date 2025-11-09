@@ -14,72 +14,115 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;        /* White background */
-    --foreground: 220 13% 13%;      /* Dark gray text */
-    --primary: 32 95% 48%;          /* Amber-500 */
-    --secondary: 220 13% 13%;       /* Gray-800 */
-    --accent: 24 95% 53%;           /* Orange-500 */
-    --muted: 220 9% 46%;            /* Gray-500 */
-    --muted-foreground: 220 9% 61%; /* Gray-400 */
-    --border: 220 13% 91%;          /* Gray-200 */
-    --ring: 32 95% 44%;             /* Amber-600 */
-    --amber-mid: 27 96% 61%;        /* Orange-400 */
-    --charcoal: 217 19% 27%;        /* Gray-700 */
-    --gold: 48 96% 53%;             /* Yellow-500 */
-    --light-bg: 220 14% 98%;        /* Gray-50 */
-  }
-
-  .dark {
-    --background: 0 0% 100%;
-    --foreground: 220 13% 13%;
-    --primary: 32 95% 48%;
-    --secondary: 220 13% 13%;
-    --accent: 24 95% 53%;
-    --muted: 220 9% 46%;
-    --muted-foreground: 220 9% 61%;
-    --border: 220 13% 91%;
-    --ring: 32 95% 44%;
+    /* Industrial-Luxury Dark Palette */
+    --background: 0 0% 6%;          /* #0F0F0F - Near black */
+    --foreground: 0 0% 96%;         /* #F4F4F4 - Off white */
+    --primary: 28 100% 48%;         /* #F28C00 - Brand orange */
+    --secondary: 0 81% 44%;         /* #C31919 - Brand red */
+    --accent: 12 79% 50%;           /* #E24E1C - Gradient mid */
+    --muted: 0 0% 54%;              /* #8A8A8A - Mid gray */
+    --muted-foreground: 0 0% 42%;   /* #6A6A6A - Dark gray */
+    --border: 0 0% 17%;             /* #2B2B2B - Charcoal */
+    --ring: 28 100% 48%;            /* #F28C00 - Orange */
+    --charcoal: 0 0% 17%;           /* #2B2B2B */
   }
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  .shadow-glow {
-    box-shadow: 0 0 20px rgba(251, 146, 60, 0.15),
-                0 0 40px rgba(245, 158, 11, 0.1);
+  /* Cinematic Gradients */
+  .brand-gradient {
+    background: linear-gradient(135deg, #F28C00 0%, #E24E1C 50%, #C31919 100%);
   }
 
-  .electrical-gradient {
-    background: linear-gradient(135deg, #F59E0B 0%, #F97316 50%, #FB923C 100%);
+  .brand-gradient-radial {
+    background: radial-gradient(circle at 30% 30%, #F28C00 0%, #E24E1C 40%, #C31919 100%);
   }
 
-  .electrical-glow {
-    text-shadow: 0 0 15px rgba(251, 146, 60, 0.3),
-                 0 0 30px rgba(245, 158, 11, 0.2);
+  .brand-gradient-animated {
+    background: linear-gradient(135deg, #F28C00, #E24E1C, #C31919, #E24E1C, #F28C00);
+    background-size: 300% 300%;
+    animation: gradientShift 8s ease infinite;
+  }
+
+  /* Industrial Glows */
+  .glow-text-orange {
+    text-shadow: 0 0 20px rgba(242, 140, 0, 0.6),
+                 0 0 40px rgba(242, 140, 0, 0.3),
+                 0 0 60px rgba(242, 140, 0, 0.2);
+  }
+
+  .glow-text-red {
+    text-shadow: 0 0 20px rgba(195, 25, 25, 0.6),
+                 0 0 40px rgba(195, 25, 25, 0.3);
+  }
+
+  /* Glass Morphism */
+  .glass {
+    background: rgba(43, 43, 43, 0.4);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(242, 140, 0, 0.1);
+  }
+
+  .glass-dark {
+    background: rgba(15, 15, 15, 0.8);
+    backdrop-filter: blur(30px);
+    border: 1px solid rgba(242, 140, 0, 0.15);
   }
 }
 
 html, body {
-  background-color: #FFFFFF;
-  color: #1F2937;
+  background-color: #0F0F0F;
+  color: #F4F4F4;
   font-family: 'Inter', sans-serif;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 ::selection {
-  background: #F97316;
-  color: #FFFFFF;
+  background: #F28C00;
+  color: #0F0F0F;
 }
 
-@keyframes flicker {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.8; }
-}
-
-.circuit-pattern {
+/* Industrial Pattern */
+.industrial-pattern {
   background-image:
-    linear-gradient(90deg, rgba(245, 158, 11, 0.08) 1px, transparent 1px),
-    linear-gradient(rgba(245, 158, 11, 0.08) 1px, transparent 1px);
-  background-size: 50px 50px;
+    linear-gradient(90deg, rgba(242, 140, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(rgba(242, 140, 0, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Metallic Shine Effect */
+.metallic {
+  position: relative;
+  overflow: hidden;
+}
+
+.metallic::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(242, 140, 0, 0.1) 50%,
+    transparent 70%
+  );
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) translateY(-100%);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%);
+  }
 }
