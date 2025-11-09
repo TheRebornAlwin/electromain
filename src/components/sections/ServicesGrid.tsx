@@ -3,18 +3,10 @@
 /**
  * ElectroMain Dramatic Services Grid
  * LARGE-SCALE presentation of 7 signature services
- * Inspired by luxury product showcases (Apple, Tesla)
- *
- * Features:
- * - Oversized cards with electrical energy effects
- * - Unique hover states with circuit pattern reveals
- * - Gradient borders and glass morphism
- * - Staggered animations for dramatic entrance
- * - Premium icon treatments
- * - Interactive hover lifts with shadows
+ * NOW WITH LUXURY IMAGE PLACEHOLDERS
  */
 
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   Zap,
   Cable,
@@ -27,6 +19,7 @@ import {
   ChevronRight,
 } from 'lucide-react';
 import { track } from '@/lib/analytics';
+import { LuxuryImagePlaceholder } from '@/components/common/LuxuryImagePlaceholder';
 
 // Service data with all copy from guide
 const services = [
@@ -189,6 +182,15 @@ function ServiceCard({
 
         {/* Content */}
         <div className="relative z-10 flex flex-col h-full">
+          {/* Luxury Image Placeholder - NEW! */}
+          <div className="mb-6 -mx-10 -mt-10">
+            <LuxuryImagePlaceholder
+              aspectRatio="16/9"
+              variant="minimal"
+              animate={true}
+            />
+          </div>
+
           {/* Icon with gradient background */}
           <div className="mb-6">
             <motion.div

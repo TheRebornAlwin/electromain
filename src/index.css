@@ -125,3 +125,44 @@ html, body {
     transform: translateX(100%) translateY(100%);
   }
 }
+
+/* ============================================================================
+   TEXT VISIBILITY FIXES - ENSURE ALL TEXT IS READABLE
+   ============================================================================ */
+
+/* Force dark text on light backgrounds */
+.text-visible-light {
+  color: #0A0B0D !important;
+}
+
+/* Force light text on dark backgrounds */
+.text-visible-dark {
+  color: #FFFFFF !important;
+}
+
+/* Ensure headings are always visible */
+h1, h2, h3, h4, h5, h6 {
+  color: #0A0B0D;
+}
+
+/* Ensure paragraphs have good contrast */
+p {
+  color: #2E2F33;
+}
+
+/* Fix any muted text that might be too light */
+.text-muted {
+  color: #6B6C70 !important;
+}
+
+/* Electrical gradient text - always visible */
+.electrical-gradient {
+  background: linear-gradient(135deg, #F6A21A 0%, #D96A0B 70%, #B64E00 100%);
+}
+
+/* Override any white text on light backgrounds */
+.bg-white .text-white,
+.bg-paper .text-white,
+.bg-warm-gray .text-white {
+  color: #0A0B0D !important;
+}
