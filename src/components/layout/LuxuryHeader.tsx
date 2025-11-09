@@ -146,7 +146,7 @@ export function LuxuryHeader() {
                   <span className="text-ink-900">Electro</span>
                   <span className="gradient-text">Main</span>
                 </span>
-                <span className="text-[9px] uppercase tracking-[0.2em] text-ink-500 font-medium mt-1">
+                <span className="text-[9px] uppercase text-ink-500 font-medium mt-1" style={{ letterSpacing: '2px' }}>
                   Precision Engineering
                 </span>
               </div>
@@ -158,39 +158,36 @@ export function LuxuryHeader() {
               aria-label="Main navigation"
             >
               {navItems.map((item, idx) => (
-                <motion.a
+                <a
                   key={item.label}
                   href={item.href}
                   onClick={() => track.navClick({ label: item.label, destination: item.href })}
-                  className="
-                    relative text-sm font-medium text-ink-700
-                    hover:text-brand-burnt-orange transition-colors duration-300
-                    group py-2
-                  "
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.5,
-                    delay: 0.5 + idx * 0.05,
-                    ease: [0.22, 1, 0.36, 1]
+                  className="relative text-sm font-medium text-ink-700 hover:text-brand-burnt-orange group py-2 block"
+                  style={{
+                    transition: 'color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                    animationDelay: `${0.5 + idx * 0.05}s`
                   }}
                 >
                   {item.label}
 
-                  {/* Animated underline */}
-                  <span className="
-                    absolute -bottom-0 left-0 w-0 h-0.5
-                    bg-gradient-to-r from-brand-amber to-brand-deep-orange
-                    group-hover:w-full transition-all duration-400
-                  " />
-
-                  {/* Subtle glow on hover */}
+                  {/* Luxury animated underline - B&O pattern */}
                   <motion.span
-                    className="absolute inset-0 rounded-lg bg-brand-amber/0 -z-10"
-                    whileHover={{ backgroundColor: 'rgba(246, 162, 26, 0.05)' }}
-                    transition={{ duration: 0.2 }}
+                    className="absolute -bottom-0 left-0 h-px bg-gradient-to-r from-brand-amber to-brand-deep-orange origin-left"
+                    initial={{ scaleX: 0 }}
+                    whileHover={{ scaleX: 1 }}
+                    transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
                   />
-                </motion.a>
+
+                  {/* Gradient overlay on hover - B&O pattern */}
+                  <motion.span
+                    className="absolute inset-x-0 -inset-y-1 rounded-lg -z-10"
+                    initial={{ background: 'transparent' }}
+                    whileHover={{
+                      background: 'linear-gradient(135deg, rgba(246, 162, 26, 0.03) 0%, rgba(217, 106, 11, 0.05) 100%)'
+                    }}
+                    transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  />
+                </a>
               ))}
             </nav>
 

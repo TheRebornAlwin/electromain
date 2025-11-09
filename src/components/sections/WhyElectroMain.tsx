@@ -137,8 +137,21 @@ function StatCard({
         {/* Circuit pattern */}
         <div className="absolute inset-0 circuit-pattern opacity-[0.015] group-hover:opacity-[0.03] transition-opacity duration-500" />
 
-        {/* Gradient overlay */}
-        <div className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500`} />
+        {/* Gradient overlay - B&O pattern */}
+        <motion.div
+          className={`absolute inset-0 bg-gradient-to-br ${stat.gradient}`}
+          initial={{ opacity: 0 }}
+          whileHover={{ opacity: 0.03 }}
+          transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+        />
+
+        {/* Shimmer effect on hover */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+          initial={{ x: '-100%' }}
+          whileHover={{ x: '100%' }}
+          transition={{ duration: 0.8, ease: 'easeInOut' }}
+        />
 
         {/* Content */}
         <div className="relative z-10">
@@ -188,13 +201,13 @@ export function WhyElectroMain() {
         >
           <div className="inline-flex items-center gap-2 mb-6">
             <div className="w-12 h-px bg-gradient-to-r from-transparent via-brand-amber to-transparent" />
-            <p className="text-[11px] uppercase tracking-[0.25em] text-ink-600 font-bold">
+            <p className="text-[11px] uppercase text-ink-600 font-bold" style={{ letterSpacing: '2px' }}>
               Why ElectroMain
             </p>
             <div className="w-12 h-px bg-gradient-to-r from-transparent via-brand-amber to-transparent" />
           </div>
 
-          <h2 className="font-display text-4xl md:text-6xl font-light text-ink-900 mb-6 tracking-tight leading-[1.1]">
+          <h2 className="font-display font-light text-ink-900 mb-6 tracking-tight leading-[1.1]" style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', letterSpacing: '-0.02em' }}>
             Engineered for <span className="gradient-text font-semibold">Precision</span>
           </h2>
         </motion.div>
@@ -211,33 +224,61 @@ export function WhyElectroMain() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             {/* Quality Engineering */}
-            <div className="bg-white rounded-2xl p-8 md:p-10 border border-ink-500/10 shadow-card">
-              <h3 className="font-display text-2xl md:text-3xl font-semibold text-ink-900 mb-4 tracking-tight">
-                Quality Engineering
-              </h3>
-              <p className="text-base md:text-lg text-ink-700 leading-relaxed">
-                Every installation is designed with longevity in mind. We specify components from trusted manufacturers, follow BS 7671 wiring regulations to the letter, and provide comprehensive test documentation. Cable routes are planned to avoid future interference; terminations are mechanically sound and clearly labeled.
-              </p>
+            <div className="group relative bg-white rounded-2xl p-8 md:p-10 border border-ink-500/10 shadow-card hover:shadow-luxury transition-all duration-500 overflow-hidden">
+              {/* Shimmer effect */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                initial={{ x: '-100%' }}
+                whileHover={{ x: '100%' }}
+                transition={{ duration: 0.8, ease: 'easeInOut' }}
+              />
+
+              <div className="relative z-10">
+                <h3 className="font-display font-semibold text-ink-900 mb-4 tracking-tight" style={{ fontSize: 'clamp(1.5rem, 3vw, 1.875rem)', letterSpacing: '-0.02em' }}>
+                  Quality Engineering
+                </h3>
+                <p className="text-ink-700 leading-relaxed" style={{ fontSize: 'clamp(1rem, 1.5vw, 1.125rem)', letterSpacing: '-0.01em' }}>
+                  Every installation is designed with longevity in mind. We specify components from trusted manufacturers, follow BS 7671 wiring regulations to the letter, and provide comprehensive test documentation. Cable routes are planned to avoid future interference; terminations are mechanically sound and clearly labeled.
+                </p>
+              </div>
             </div>
 
             {/* Reliability on Schedule */}
-            <div className="bg-white rounded-2xl p-8 md:p-10 border border-ink-500/10 shadow-card">
-              <h3 className="font-display text-2xl md:text-3xl font-semibold text-ink-900 mb-4 tracking-tight">
-                Reliability on Schedule
-              </h3>
-              <p className="text-base md:text-lg text-ink-700 leading-relaxed">
-                We arrive on time, complete within quoted timescales, and communicate proactively if circumstances change. Our 98.7% on-time completion rate reflects robust project planning and buffer time for unforeseen site conditions. You'll receive a daily briefing on progress and next steps.
-              </p>
+            <div className="group relative bg-white rounded-2xl p-8 md:p-10 border border-ink-500/10 shadow-card hover:shadow-luxury transition-all duration-500 overflow-hidden">
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                initial={{ x: '-100%' }}
+                whileHover={{ x: '100%' }}
+                transition={{ duration: 0.8, ease: 'easeInOut' }}
+              />
+
+              <div className="relative z-10">
+                <h3 className="font-display font-semibold text-ink-900 mb-4 tracking-tight" style={{ fontSize: 'clamp(1.5rem, 3vw, 1.875rem)', letterSpacing: '-0.02em' }}>
+                  Reliability on Schedule
+                </h3>
+                <p className="text-ink-700 leading-relaxed" style={{ fontSize: 'clamp(1rem, 1.5vw, 1.125rem)', letterSpacing: '-0.01em' }}>
+                  We arrive on time, complete within quoted timescales, and communicate proactively if circumstances change. Our 98.7% on-time completion rate reflects robust project planning and buffer time for unforeseen site conditions. You'll receive a daily briefing on progress and next steps.
+                </p>
+              </div>
             </div>
 
             {/* Safety Without Compromise */}
-            <div className="bg-white rounded-2xl p-8 md:p-10 border border-ink-500/10 shadow-card">
-              <h3 className="font-display text-2xl md:text-3xl font-semibold text-ink-900 mb-4 tracking-tight">
-                Safety Without Compromise
-              </h3>
-              <p className="text-base md:text-lg text-ink-700 leading-relaxed">
-                All installations undergo dead and live testing before energization. We isolate circuits safely, follow lock-off procedures, and never skip earthing checks. Our NICEIC certification is audited annually, ensuring that our standards remain current and our team stays trained on the latest safety protocols.
-              </p>
+            <div className="group relative bg-white rounded-2xl p-8 md:p-10 border border-ink-500/10 shadow-card hover:shadow-luxury transition-all duration-500 overflow-hidden">
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                initial={{ x: '-100%' }}
+                whileHover={{ x: '100%' }}
+                transition={{ duration: 0.8, ease: 'easeInOut' }}
+              />
+
+              <div className="relative z-10">
+                <h3 className="font-display font-semibold text-ink-900 mb-4 tracking-tight" style={{ fontSize: 'clamp(1.5rem, 3vw, 1.875rem)', letterSpacing: '-0.02em' }}>
+                  Safety Without Compromise
+                </h3>
+                <p className="text-ink-700 leading-relaxed" style={{ fontSize: 'clamp(1rem, 1.5vw, 1.125rem)', letterSpacing: '-0.01em' }}>
+                  All installations undergo dead and live testing before energization. We isolate circuits safely, follow lock-off procedures, and never skip earthing checks. Our NICEIC certification is audited annually, ensuring that our standards remain current and our team stays trained on the latest safety protocols.
+                </p>
+              </div>
             </div>
           </motion.div>
 

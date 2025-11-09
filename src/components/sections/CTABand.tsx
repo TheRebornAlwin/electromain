@@ -137,9 +137,10 @@ export function CTABand() {
             </div>
           </motion.div>
 
-          {/* Massive headline */}
+          {/* Massive headline with fluid typography */}
           <motion.h2
-            className="font-display text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-light text-white mb-6 md:mb-8 tracking-tight leading-[1.05]"
+            className="font-display font-light text-white mb-6 md:mb-8 leading-[1.05]"
+            style={{ fontSize: 'clamp(2rem, 8vw, 5.5rem)', letterSpacing: '-0.03em' }}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -150,9 +151,10 @@ export function CTABand() {
             Uncompromising safety.
           </motion.h2>
 
-          {/* Subline */}
+          {/* Subline with fluid typography */}
           <motion.p
-            className="text-lg md:text-xl lg:text-2xl text-white/70 mb-10 md:mb-14 max-w-3xl mx-auto"
+            className="text-white/70 mb-10 md:mb-14 max-w-3xl mx-auto"
+            style={{ fontSize: 'clamp(1.125rem, 2vw, 1.5rem)', letterSpacing: '-0.01em' }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -192,7 +194,7 @@ export function CTABand() {
                 transition={{ duration: 0.6, ease: 'easeInOut' }}
               />
 
-              <span className="relative z-10 flex items-center gap-3">
+              <span className="relative z-10 flex items-center gap-3 uppercase" style={{ letterSpacing: '1px' }}>
                 Book a Site Visit
                 <ArrowRight className="w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform" />
               </span>
@@ -206,8 +208,9 @@ export function CTABand() {
                 border-2 border-white/30 text-white text-base md:text-lg font-bold
                 hover:bg-white/10 hover:border-white/50
                 transition-all duration-300
-                flex items-center gap-3
+                flex items-center gap-3 uppercase
               "
+              style={{ letterSpacing: '1px' }}
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.98 }}
             >

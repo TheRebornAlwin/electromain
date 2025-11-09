@@ -141,7 +141,8 @@ export function ElectricalHero({
           duration: 1.2,
           ease: [0.22, 1, 0.36, 1],
         }}
-        className="relative flex flex-col gap-8 items-center justify-center px-4 pt-40 pb-32 min-h-screen"
+        className="relative flex flex-col gap-8 items-center justify-center px-4 pt-40 pb-32"
+        style={{ minHeight: 'max(100dvh, 43.75rem)' }}
       >
         <div className="max-w-6xl mx-auto space-y-16">
           {/* Light luxury typography */}
@@ -151,9 +152,10 @@ export function ElectricalHero({
             transition={{ delay: 0.4, duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
             className="text-center space-y-8"
           >
-            <h1 className="text-6xl md:text-8xl xl:text-9xl font-extralight text-center tracking-tight leading-[1.05]">
+            <h1 className="font-extralight text-center leading-[1.05]" style={{ fontSize: 'clamp(2.5rem, 8vw, 8rem)' }}>
               <motion.span
-                className="block text-soft-black mb-6 tracking-wide font-light"
+                className="block text-soft-black mb-6 font-light"
+                style={{ letterSpacing: '0.02em' }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 1.2 }}
@@ -161,7 +163,8 @@ export function ElectricalHero({
                 {title.split(' ').slice(0, -1).join(' ')}
               </motion.span>
               <motion.span
-                className="brand-gradient bg-clip-text text-transparent font-bold tracking-tight"
+                className="brand-gradient bg-clip-text text-transparent font-bold"
+                style={{ letterSpacing: '-0.03em' }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7, duration: 1.2 }}
@@ -188,7 +191,8 @@ export function ElectricalHero({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-              className="text-lg md:text-2xl text-charcoal text-center max-w-3xl mx-auto font-normal leading-relaxed tracking-wide"
+              className="text-charcoal text-center max-w-3xl mx-auto font-normal leading-relaxed"
+              style={{ fontSize: 'clamp(1.125rem, 2vw, 1.5rem)', letterSpacing: '-0.01em' }}
             >
               {description}
             </motion.p>
@@ -206,15 +210,16 @@ export function ElectricalHero({
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
               transition={{ duration: 0.16 }}
-              className="brand-gradient text-white font-semibold px-14 py-6 text-sm rounded-full uppercase tracking-[0.25em] shadow-ambient-hover relative group overflow-hidden"
+              className="brand-gradient text-white font-semibold px-14 py-6 text-sm rounded-full uppercase shadow-ambient-hover relative group overflow-hidden"
+              style={{ letterSpacing: '2px' }}
             >
               <span className="relative z-10">{primaryAction.label}</span>
-              {/* Subtle underline sweep on hover */}
+              {/* Luxury animated underline - B&O pattern */}
               <motion.div
-                className="absolute bottom-5 left-0 right-0 h-px bg-white/40"
+                className="absolute bottom-5 left-0 right-0 h-px bg-white/40 origin-left"
                 initial={{ scaleX: 0 }}
                 whileHover={{ scaleX: 1 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
               />
             </motion.button>
 
@@ -228,7 +233,8 @@ export function ElectricalHero({
               }}
               whileTap={{ scale: 0.98 }}
               transition={{ duration: 0.16 }}
-              className="border-2 border-divider text-charcoal bg-white/80 backdrop-blur-sm font-semibold px-14 py-6 text-sm rounded-full uppercase tracking-[0.25em] shadow-ambient"
+              className="border-2 border-divider text-charcoal bg-white/80 backdrop-blur-sm font-semibold px-14 py-6 text-sm rounded-full uppercase shadow-ambient"
+              style={{ letterSpacing: '2px' }}
             >
               <span className="relative z-10">{secondaryAction.label}</span>
             </motion.button>

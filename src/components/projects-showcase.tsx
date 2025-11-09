@@ -1,164 +1,237 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import { motion } from "framer-motion";
+import { LuxuryImagePlaceholder } from "@/components/common/LuxuryImagePlaceholder";
 
 export default function ProjectsShowcase() {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const featuredProject = {
+    id: 1,
+    title: "Luxury Residential Rewire",
+    location: "Kensington, London",
+    category: "RESIDENTIAL",
+    description: "Complete electrical redesign for a 6-bedroom townhouse featuring smart home integration, ambient lighting systems, and premium finishes throughout.",
+    aspectRatio: "16/9" as const,
+  };
 
-  const projects = [
-    {
-      id: 1,
-      title: "Luxury Residential Rewire",
-      location: "Kensington, London",
-      category: "Residential",
-    },
+  const supportingProjects = [
     {
       id: 2,
       title: "Modern Office Fit-Out",
       location: "Canary Wharf",
-      category: "Commercial",
+      category: "COMMERCIAL",
+      description: "Full electrical installation for 15,000 sq ft commercial space with advanced lighting control.",
+      aspectRatio: "4/3" as const,
     },
     {
       id: 3,
       title: "Period Property Restoration",
       location: "Chelsea",
-      category: "Heritage",
-    },
-    {
-      id: 4,
-      title: "Smart Home Integration",
-      location: "Hampstead",
-      category: "Technology",
-    },
-    {
-      id: 5,
-      title: "Industrial Complex",
-      location: "South East London",
-      category: "Industrial",
-    },
-    {
-      id: 6,
-      title: "Boutique Hotel",
-      location: "Mayfair",
-      category: "Hospitality",
-    },
-    {
-      id: 7,
-      title: "Premium Apartment Complex",
-      location: "Notting Hill",
-      category: "Residential",
-    },
-    {
-      id: 8,
-      title: "Flagship Retail Store",
-      location: "Bond Street",
-      category: "Commercial",
+      category: "HERITAGE",
+      description: "Sympathetic electrical restoration preserving original features while meeting modern standards.",
+      aspectRatio: "4/3" as const,
     },
   ];
 
   return (
-    <section className="relative py-24 bg-paper overflow-hidden">
+    <section className="relative py-24 md:py-32 bg-paper overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-warm-gray/30 via-paper to-warm-gray/30" />
+      <div className="absolute inset-0 luxury-pattern opacity-30" />
 
-      <div className="relative z-10">
-        {/* Luxury header */}
+      <div className="container relative z-10">
+        {/* Luxury header with fluid typography */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
-          className="text-center mb-16 px-6"
+          className="text-center mb-16 md:mb-20"
         >
-          <h2 className="text-4xl md:text-6xl font-light tracking-tight mb-6">
-            <span className="text-soft-black font-extralight">Our</span>
-            <span className="bg-gradient-to-r from-amber via-burnt-orange to-deep-orange bg-clip-text text-transparent font-normal"> Showcase</span>
+          <div className="inline-flex items-center gap-2 mb-6">
+            <div className="w-12 h-px bg-gradient-to-r from-transparent via-brand-amber to-transparent" />
+            <p className="text-[11px] uppercase tracking-[0.25em] text-ink-600 font-bold" style={{ letterSpacing: '2px' }}>
+              Recent Projects
+            </p>
+            <div className="w-12 h-px bg-gradient-to-r from-transparent via-brand-amber to-transparent" />
+          </div>
+
+          <h2 className="font-display font-light text-ink-900 mb-6 tracking-tight leading-[1.1]" style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)' }}>
+            <span className="font-extralight">Our</span>
+            <span className="gradient-text font-semibold"> Showcase</span>
           </h2>
-          <motion.div
-            className="w-12 h-px bg-gradient-to-r from-transparent via-amber to-transparent mx-auto mb-6"
-            animate={{ opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 3, repeat: Infinity }}
-          />
-          <p className="text-charcoal text-sm md:text-base font-light tracking-wide max-w-xl mx-auto">
+
+          <p className="text-ink-700 leading-relaxed max-w-2xl mx-auto" style={{ fontSize: 'clamp(1rem, 2vw, 1.25rem)', letterSpacing: '-0.01em' }}>
             Exceptional electrical installations across London and the South East
           </p>
         </motion.div>
 
-        {/* Horizontal scroll container */}
-        <div className="relative">
-          {/* Gradient overlays for scroll indication */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-paper to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-paper to-transparent z-10 pointer-events-none" />
-
+        {/* Asymmetrical Grid - Ferrari Pattern */}
+        <div className="grid lg:grid-cols-2 gap-6 md:gap-8">
+          {/* Featured Project - Large */}
           <motion.div
-            ref={scrollContainerRef}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 1 }}
-            viewport={{ once: true }}
-            className="flex gap-6 overflow-x-auto pb-6 px-6 md:px-12 scrollbar-hide snap-x snap-mandatory"
-            style={{
-              scrollbarWidth: 'none',
-              msOverflowStyle: 'none',
-            }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0, ease: [0.22, 1, 0.36, 1] }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="lg:row-span-2"
           >
-            {projects.map((project, index) => (
+            <div className="group relative h-full bg-white rounded-3xl border border-ink-500/10 shadow-luxury hover:shadow-float transition-all duration-500 overflow-hidden">
+              <div className="p-8 md:p-10 h-full flex flex-col">
+                {/* Featured image */}
+                <div className="mb-6">
+                  <LuxuryImagePlaceholder
+                    aspectRatio={featuredProject.aspectRatio}
+                    variant="elevated"
+                    animate={true}
+                  />
+                </div>
+
+                {/* Category badge */}
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-1.5 h-1.5 rounded-full bg-brand-amber" />
+                  <span className="text-[10px] uppercase font-bold text-brand-burnt-orange" style={{ letterSpacing: '2px' }}>
+                    {featuredProject.category}
+                  </span>
+                </div>
+
+                {/* Title with dramatic typography */}
+                <h3 className="font-display font-semibold text-ink-900 mb-3 tracking-tight leading-tight" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', letterSpacing: '-0.02em' }}>
+                  {featuredProject.title}
+                </h3>
+
+                {/* Location */}
+                <p className="text-sm text-brand-amber font-medium mb-4 italic">
+                  {featuredProject.location}
+                </p>
+
+                {/* Description */}
+                <p className="text-ink-700 leading-relaxed mb-6 flex-grow" style={{ fontSize: 'clamp(0.9rem, 1.5vw, 1.125rem)' }}>
+                  {featuredProject.description}
+                </p>
+
+                {/* Animated CTA with underline */}
+                <motion.a
+                  href="#"
+                  className="inline-flex items-center gap-2 text-brand-burnt-orange font-semibold text-sm group/link"
+                  whileHover={{ x: 4 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <span className="relative">
+                    View Project Details
+                    <motion.div
+                      className="absolute bottom-0 left-0 right-0 h-px bg-brand-burnt-orange origin-left"
+                      initial={{ scaleX: 0 }}
+                      whileHover={{ scaleX: 1 }}
+                      transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    />
+                  </span>
+                  <motion.span
+                    animate={{ x: [0, 4, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    →
+                  </motion.span>
+                </motion.a>
+              </div>
+
+              {/* Hover gradient effect */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-br from-brand-sun-yellow/5 via-brand-amber/5 to-brand-burnt-orange/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+              />
+            </div>
+          </motion.div>
+
+          {/* Supporting Projects - Smaller */}
+          <div className="grid gap-6 md:gap-8 lg:grid-rows-2">
+            {supportingProjects.map((project, index) => (
               <motion.div
                 key={project.id}
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.05, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: (index + 1) * 0.05, ease: [0.22, 1, 0.36, 1] }}
                 viewport={{ once: true, margin: "-100px" }}
-                className="group relative flex-shrink-0 w-[340px] h-[440px] snap-center"
               >
-                <div className="relative h-full rounded-lg glass-light border border-divider shadow-ambient hover:shadow-luxury overflow-hidden transition-all duration-700 hover:border-amber/30">
-                  {/* Subtle luxury gradient background */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-sun-yellow/[0.02] via-transparent to-amber/[0.01]" />
-
-                  {/* Image placeholder */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center space-y-3 opacity-20">
-                      <div className="text-xs text-amber/60 tracking-[0.3em] uppercase font-light">{project.category}</div>
+                <div className="group relative h-full bg-white rounded-3xl border border-ink-500/10 shadow-card hover:shadow-luxury transition-all duration-500 overflow-hidden">
+                  <div className="p-6 md:p-8 h-full flex flex-col">
+                    {/* Image */}
+                    <div className="mb-4">
+                      <LuxuryImagePlaceholder
+                        aspectRatio={project.aspectRatio}
+                        variant="minimal"
+                        animate={true}
+                      />
                     </div>
+
+                    {/* Category */}
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-1 h-1 rounded-full bg-brand-amber" />
+                      <span className="text-[9px] uppercase font-bold text-brand-burnt-orange" style={{ letterSpacing: '2px' }}>
+                        {project.category}
+                      </span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="font-display text-xl md:text-2xl font-semibold text-ink-900 mb-2 tracking-tight leading-tight" style={{ letterSpacing: '-0.02em' }}>
+                      {project.title}
+                    </h3>
+
+                    {/* Location */}
+                    <p className="text-xs text-brand-amber font-medium mb-3 italic">
+                      {project.location}
+                    </p>
+
+                    {/* Description */}
+                    <p className="text-sm text-ink-700 leading-relaxed mb-4 flex-grow">
+                      {project.description}
+                    </p>
+
+                    {/* Simple arrow link */}
+                    <motion.a
+                      href="#"
+                      className="inline-flex items-center gap-2 text-brand-burnt-orange font-semibold text-xs"
+                      whileHover={{ x: 2 }}
+                    >
+                      <span className="relative">
+                        View Details
+                        <motion.div
+                          className="absolute bottom-0 left-0 right-0 h-px bg-brand-burnt-orange origin-left"
+                          initial={{ scaleX: 0 }}
+                          whileHover={{ scaleX: 1 }}
+                          transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+                        />
+                      </span>
+                      →
+                    </motion.a>
                   </div>
 
-                  {/* Bottom info section with light glass */}
-                  <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-white/95 via-white/80 to-transparent backdrop-blur-md">
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-2">
-                        <div className="w-1 h-1 rounded-full bg-amber" />
-                        <span className="text-[10px] uppercase tracking-[0.25em] text-amber font-medium">
-                          {project.category}
-                        </span>
-                      </div>
-                      <h3 className="text-lg font-normal text-soft-black tracking-tight leading-snug">
-                        {project.title}
-                      </h3>
-                      <p className="text-xs text-charcoal font-light tracking-wide">
-                        {project.location}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Subtle top accent */}
-                  <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-amber/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  {/* Hover effect */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-br from-brand-amber/5 to-brand-burnt-orange/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  />
                 </div>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
 
-        {/* Scroll hint */}
+        {/* View all projects CTA */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 1 }}
+          className="text-center mt-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mt-12"
+          transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <p className="text-[11px] uppercase tracking-[0.3em] text-charcoal/40 font-light">
-            Scroll to explore
-          </p>
+          <motion.a
+            href="#"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full border-2 border-brand-amber text-brand-burnt-orange font-semibold hover:bg-brand-amber/5 transition-all duration-300 uppercase text-xs"
+            style={{ letterSpacing: '2px' }}
+            whileHover={{ scale: 1.03, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            View All Projects
+            <span>→</span>
+          </motion.a>
         </motion.div>
       </div>
     </section>
