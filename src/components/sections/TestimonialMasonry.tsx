@@ -14,62 +14,69 @@ import * as React from 'react';
 import { MasonryGrid } from '@/components/ui/image-testimonial-grid';
 import { motion } from 'framer-motion';
 
-// ElectroMain testimonial data
+// ElectroMain testimonial data - using same images as 3D Marquee
 const testimonials = [
   {
     profileImage: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop',
     name: 'David Thompson',
-    feedback: 'Exceptional Commercial Installation',
-    mainImage: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&h=1200&q=80',
+    feedback: 'Luxury Residential Rewire',
+    mainImage: 'https://suenwj7f98.ufs.sh/f/9KZEt2mkOo60r0hpP3UoRhLj40IuaYCfTJyANB2erwGx8nPc',
     rating: 5,
   },
   {
     profileImage: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop',
     name: 'Sarah Mitchell',
-    feedback: 'Luxury Residential Rewire Excellence',
-    mainImage: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&h=1000&q=80',
+    feedback: 'Modern Office Fit-Out Excellence',
+    mainImage: 'https://suenwj7f98.ufs.sh/f/9KZEt2mkOo60GbXOu1Q5a12FlCKLYI6AJEOzcqwjv50oHBP4',
     rating: 5,
   },
   {
     profileImage: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop',
     name: 'James Wilson',
-    feedback: 'Smart Home Integration Perfection',
-    mainImage: 'https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=800&h=1200&q=80',
+    feedback: 'Period Property Restoration',
+    mainImage: 'https://suenwj7f98.ufs.sh/f/9KZEt2mkOo60OccDWmsMFbNBq7voiIeZ8pd43Pzu0tTDR9lM',
     rating: 5,
   },
   {
     profileImage: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop',
     name: 'Emma Richardson',
-    feedback: 'Professional EV Charger Install',
-    mainImage: 'https://images.unsplash.com/photo-1617704548623-340376564e68?auto=format&fit=crop&w=800&h=1000&q=80',
+    feedback: 'Smart Home Integration Perfection',
+    mainImage: 'https://suenwj7f98.ufs.sh/f/9KZEt2mkOo60O6tjA1MFbNBq7voiIeZ8pd43Pzu0tTDR9lMJ',
     rating: 5,
   },
   {
     profileImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop',
     name: 'Michael Chen',
-    feedback: 'Industrial Electrical Expertise',
-    mainImage: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=800&h=1200&q=80',
+    feedback: 'Industrial Complex Installation',
+    mainImage: 'https://suenwj7f98.ufs.sh/f/9KZEt2mkOo60563axeYQcokl7hjW2Xn48vdNO9FasTyD6IMb',
     rating: 5,
   },
   {
     profileImage: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop',
     name: 'Rachel Green',
-    feedback: 'Heritage Property Restoration',
-    mainImage: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&h=1000&q=80',
+    feedback: 'Boutique Hotel Electrical Work',
+    mainImage: 'https://suenwj7f98.ufs.sh/f/9KZEt2mkOo60KUWmTE8pEAjeMQOGTb9VvPHucf4Cods1yFk6',
     rating: 5,
   },
   {
     profileImage: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop',
     name: 'Tom Anderson',
-    feedback: 'CCTV & Security Systems',
-    mainImage: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=800&h=1200&q=80',
+    feedback: 'Premium Apartment Complex',
+    mainImage: 'https://suenwj7f98.ufs.sh/f/9KZEt2mkOo60YgpnSDbFJWghNpkz60GSmELv43BZaxPTbOY9',
     rating: 5,
   },
   {
     profileImage: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=100&h=100&fit=crop',
     name: 'Sophie Bennett',
-    feedback: 'Office Lighting Transformation',
-    mainImage: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&h=1000&q=80',
+    feedback: 'Flagship Retail Store Lighting',
+    mainImage: 'https://suenwj7f98.ufs.sh/f/9KZEt2mkOo60VuzSUIWhDRFXsu6pOCWxBLnbZHgvImqo3E1A',
+    rating: 5,
+  },
+  {
+    profileImage: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=100&h=100&fit=crop',
+    name: 'Robert Davies',
+    feedback: 'Data Center Electrical Installation',
+    mainImage: 'https://suenwj7f98.ufs.sh/f/9KZEt2mkOo60LmML0di0LIztSgi7JQ9OW4xouMKaepnsh6GU',
     rating: 5,
   },
 ];
@@ -156,8 +163,8 @@ export function TestimonialMasonry() {
           </div>
 
           <h2 className="font-display font-light text-ink-900 mb-6 tracking-tight leading-[1.1]" style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', letterSpacing: '-0.02em' }}>
-            <span className="font-extralight">What People Are</span>
-            <span className="gradient-text font-semibold"> Saying</span>
+            <span className="font-extralight">What People Are </span>
+            <span className="gradient-text font-semibold">Saying</span>
           </h2>
 
           <p className="text-ink-700 leading-relaxed" style={{ fontSize: 'clamp(1rem, 2vw, 1.25rem)', letterSpacing: '-0.01em' }}>

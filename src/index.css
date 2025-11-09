@@ -166,10 +166,13 @@ p {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  /* Ensure it stays inline and doesn't create blocks */
-  display: inline-block;
+  /* Ensure it stays inline and doesn't create visible blocks */
+  display: inline;
   padding: 0;
   margin: 0;
+  /* Remove any potential background visibility */
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 /* CRITICAL: Override any white text on light backgrounds */
@@ -179,6 +182,19 @@ p {
 .bg-background .text-white:not(.bg-ink-900 *):not(.bg-ink-800 *):not(.electrical-gradient *):not(.brand-gradient *) {
   color: #0A0B0D !important;
   -webkit-text-fill-color: #0A0B0D !important;
+}
+
+/* ULTRA AGGRESSIVE: Force ANY light-colored text on light backgrounds to be dark */
+.bg-background *, .bg-paper *, .bg-white *, .bg-warm-gray * {
+  /* Override light text colors */
+}
+
+.bg-background h1:not(.gradient-text):not(.bg-ink-900 h1):not(.bg-ink-800 h1):not(.electrical-gradient),
+.bg-background h2:not(.gradient-text):not(.bg-ink-900 h2):not(.bg-ink-800 h2):not(.electrical-gradient),
+.bg-background h3:not(.gradient-text):not(.bg-ink-900 h3):not(.bg-ink-800 h3):not(.electrical-gradient),
+.bg-background p:not(.bg-ink-900 p):not(.bg-ink-800 p),
+.bg-background span:not(.gradient-text):not(.bg-ink-900 span):not(.bg-ink-800 span):not(.brand-gradient span):not(.electrical-gradient):not(.text-brand-sun-yellow):not(.text-brand-amber):not(.text-brand-burnt-orange) {
+  color: #0A0B0D !important;
 }
 
 /* Ensure all body text is visible */

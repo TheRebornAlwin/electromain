@@ -36,7 +36,7 @@ export const ThreeDMarquee = ({
             style={{
               transform: "rotateX(55deg) rotateY(0deg) rotateZ(-45deg)",
             }}
-            className="relative top-96 right-[50%] grid size-full origin-top-left grid-cols-4 gap-8 transform-3d"
+            className="relative top-96 right-[50%] grid size-full origin-top-left grid-cols-4 gap-16 transform-3d"
           >
             {chunks.map((subarray, colIndex) => (
               <motion.div
@@ -47,7 +47,7 @@ export const ThreeDMarquee = ({
                   repeatType: "reverse",
                 }}
                 key={colIndex + "marquee"}
-                className="flex flex-col items-start gap-8"
+                className="flex flex-col items-start gap-16"
               >
                 <GridLineVertical className="-left-4" offset="80px" />
                 {subarray.map((project, imageIndex) => (
