@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Navbar from "@/components/navbar";
+import { UtilityBar } from "@/components/layout/UtilityBar";
+import { LuxuryHeader } from "@/components/layout/LuxuryHeader";
 import { ElectricalHero } from "@/components/ui/electrical-hero";
 import ProjectsShowcase from "@/components/projects-showcase";
 import EstimateCalculator from "@/components/estimate-calculator";
@@ -85,7 +86,8 @@ export default function App() {
 
   return (
     <>
-      <Navbar />
+      <UtilityBar />
+      <LuxuryHeader />
 
       <ElectricalHero
         title="PREMIUM ELECTRICAL SERVICES"
