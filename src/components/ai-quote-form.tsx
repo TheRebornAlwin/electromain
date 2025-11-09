@@ -132,7 +132,7 @@ export default function AIQuoteForm() {
               placeholder="Example: Complete rewiring for a 3-bedroom house in Kensington. Requirements include 15 LED downlights, 20 double sockets, consumer unit upgrade, outdoor security lighting, and EV charger installation."
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              className="w-full min-h-[280px] rounded-lg bg-white border border-border/50 px-10 py-8 text-secondary placeholder:text-muted/40 focus:border-accent/30 focus:ring-1 focus:ring-accent/10 outline-none transition-all duration-500 text-sm leading-relaxed shadow-sm hover:shadow-md resize-none font-light"
+              className="w-full min-h-[280px] rounded-lg bg-white border border-border/50 px-10 py-8 text-secondary placeholder:text-muted/70 focus:border-accent/30 focus:ring-1 focus:ring-accent/10 outline-none transition-all duration-500 text-base leading-relaxed shadow-sm hover:shadow-md resize-none"
             />
 
             {loading && (
